@@ -2,9 +2,6 @@ import React, { memo } from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import AppContainerPage from './Pages/AppContainer.Page';
 import AuthPage from './Pages/Auth.Page';
-import DashboardPage from './Pages/Dashboard.Page';
-import LoginPage from './Pages/Login.Page';
-import RecordingPage from './Pages/Recording.Page';
 import NotFound from './Pages/NotFound'
 
 interface Props{
