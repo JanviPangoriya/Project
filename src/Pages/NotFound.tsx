@@ -7,9 +7,9 @@ interface Props{
 
 const NotFound:React.FC<Props>=(props) => {
     return(
-        <>
-        helloeesdfrs
-        </>
+        <div className="bg-gradient-to-br from-blue-500 to-pink-200 font-bold py-80 px-96 justify-between w-screen h-screen">
+        Sorry, Page you are looking for is not exist
+        </div>
     );
 
 }
