@@ -3,7 +3,6 @@ import { memo } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { HiLockClosed, HiUser } from "react-icons/hi";
 import { FaSpinner} from "react-icons/fa";
-
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import Input from '../Component/Input';
@@ -27,7 +26,7 @@ const myform = useFormik({
         // "Password should have atleset "+min+" characters."
     }
   ),
-  onSubmit : (data,{setSubmitting}) =>
+  onSubmit : (data) =>
   {
     console.log("form submitting ",data)
     setTimeout(()=>{
@@ -40,8 +39,8 @@ const myform = useFormik({
     return(
         <>
         <div className="lg:w-1/2">
-          <div className="mx-20 text-gray-700">
-                  <div className="flex flex-col justify-center h-screen py-3 px-11 ">
+          <div className="mx-0 md:mx-20 text-gray-700">
+                  <div className="flex flex-col justify-center mt-10 py-3 px-11 ">
                       <h1 className="text-4xl mb-2">Log In To  <span className="uppercase text-blue-500">Devs</span></h1>
                       <div className="mb-10 text-md pb-1 font-semibold">New Here ?
                           <Link to="/sign" className="border-b-2 ml-2 border-blue-500 text-blue-500">
@@ -75,7 +74,7 @@ const myform = useFormik({
          <HiLockClosed className="mb-10 z-50 m-2 w-7 h-7 text-blue-500 absolute"></HiLockClosed>
        </Input>
         
-        <div className="flex flex-col justify-start md:flex-row md:justify-between md:items-center mt-5 ">
+        <div className="flex flex-col justify-start sm:flex-row sm:justify-between sm:items-center mt-5 ">
            <div className="flex-row flex ">
     <span className="mr-5">Show Password</span>
     <div className="relative">
@@ -84,7 +83,7 @@ const myform = useFormik({
       
     </div>
   </div>
-    <button  
+    <button  disabled={!myform.isValid}
     type="submit" className={"w-20 px-3 mt-5 md:mt-0 py-1 rounded-md bg-blue-600 text-white font-semibold shadow-2xl hover:shadow-none "} >
 Log In
 </button>
@@ -100,7 +99,7 @@ Log In
       Forgot Password?
   </div>
   {myform.isSubmitting && <FaSpinner className ="animate-spin mx-auto mt-2"></FaSpinner>}
-  <div className="mt-20">
+  <div className="mt-20 text-justify">
 © 2020 All Rights Reserved. <span className="text-blue-500 font-bold text-md">Devslane</span> is a comapny which is currently working on web development. <span className="text-blue-500 font-bold text-md">Cookie Preferences <span className="text-gray-700 font-normal">,</span> Privacy<span className="text-gray-700 font-normal">,</span> and Terms.</span>
   </div>
 
