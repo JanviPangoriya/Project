@@ -33,7 +33,7 @@ const AppContainer :React.FC<Props>=(props) => {
        </div>
     );
 
-}
+};
 
 AppContainer.defaultProps={
     

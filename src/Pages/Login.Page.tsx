@@ -1,33 +1,72 @@
 import React from 'react';
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
-
+import { HiLockClosed, HiUser } from "react-icons/hi";
 interface Props{
 
 }
-
 const Login:React.FC<Props>=(props) => {
     return(
         <>
-        <div className="text-gray-800 pt-80 pl-20 font-bold">
-            <div className="absolute top-40 text-3xl pl-10 uppercase text-transparent bg-gradient-to-r from-yellow-300 to-blue-500 bg-clip-text font-extrabold">
-                Welcome to login Page
-                </div>
-                </div>
-            <br />
-         <div className="mt-72 absolute ml-40 space-y-5">
-            <div>
-            Don't Have an Account? 
- 
- <Link to="/sign">
-     
-     <button className="pl-4 text-green-500 font-bold hover:text-red-600">
-          Signup
-     </button>
- </Link>
-            </div>
-        
-         </div>
+        <div className="lg:w-1/2">
+          <div className="mx-20 text-gray-700">
+                  <div className="flex flex-col justify-center h-screen py-3 px-11 ">
+                      <h1 className="text-4xl mb-2">Log In To  <span className="uppercase text-blue-500">Devs</span></h1>
+                      <div className="mb-10 text-md pb-1 font-semibold">New Here ?
+                          <Link to="/sign" className="border-b-2 ml-2 border-blue-500 text-blue-500">
+                              Create an account
+                          </Link> </div>
+                     <form action="#">
+                     <div className="h-20 mb-1 pt-3 pb-6">
+          <label htmlFor="email-address" className="sr-only">Email address</label>
+          <div className="flex flex-row ">
+          <HiUser className="mb-10 z-50 m-2 w-7 h-7 text-blue-500 absolute"></HiUser>
+          <input id="email-address" name="email" type="email" autoComplete="email" required className="relative appearance-none rounded-none block p-10 w-full h-12 pl-10 py-5 border-b border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500  focus:border-indigo-500 focus:z-10 sm:text-sm" 
+          value ={}
+          placeholder="Email address" />
+          </div>
+        </div>
+        <div  className="h-20 mb-2 pt-3 pb-6">
+          <label htmlFor="password" className="sr-only">Password</label>
+          <HiLockClosed className="mb-10 z-50 m-2 w-7 h-7 text-blue-500 absolute"></HiLockClosed>
+          <input id="password" name="password" type="password" autoComplete="current-password" required className=" relativeappearance-none rounded-none relative block p-10 w-full h-12 pl-10 py-2 border-b border-gray-300 placeholder-gray-700 placeholder-opacity-95  text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password" />
+        </div>
+        <div className="flex flex-col justify-start md:flex-row md:justify-between md:items-center mt-5 "
+  > <div className="flex-row flex ">
+    <span className="mr-5">Show Password</span>
+    <div className="relative">
+      <div className="w-10 h-4 bg-gray-400 rounded-full shadow-inner"></div>
+      <div className="absolute w-6 h-6 bg-white rounded-full shadow -left-1 -top-1 transition"></div>
+      
+    </div>
+  </div>
+    <button
+type="submit" className="w-20 px-3 mt-5 md:mt-0 py-1 rounded-md bg-blue-600 text-white font-semibold shadow-2xl hover:shadow-none">
+Log In
+</button>
+  </div>
+  <div className=" mt-16 mb-4">
+  <div className="flex flex-row justify-center items-center">
+
+  <label htmlFor="logeedIn" className="pl-2 mr-4 font-semibold ">
+  <input type="checkbox" name="logeedIn" id="logeedIn" className="w-6 h-4 focus:bg-red-600"/> Keep Me Logged In </label>
+  </div>
+  </div>
+  <div className="text-center mt-4 text-blue-500 font-bold text-md">
+      Forgot Password?
+  </div>
+  <div className="mt-20">
+© 2020 All Rights Reserved. <span className="text-blue-500 font-bold text-md">Devslane</span> is a comapny which is currently working on web development. <span className="text-blue-500 font-bold text-md">Cookie Preferences <span className="text-gray-700 font-normal">,</span> Privacy<span className="text-gray-700 font-normal">,</span> and Terms.</span>
+  </div>
+
+                     </form>
+
+                  </div>
+                  </div>
+        </div>
+
+  
+
         </>
     );
 
