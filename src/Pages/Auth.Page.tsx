@@ -1,33 +1,27 @@
-import React, { memo } from 'react';
-import { Route, Switch } from 'react-router-dom';
-import AuthHero from '../Component/AuthHero';
-import LoginPage from './Login.Page';
-import SignupPage from './Signup.Page';
+import React, { memo } from "react";
+import { Route, Switch } from "react-router-dom";
+import AuthHero from "../Component/AuthHero";
+import LoginPage from "./Login.Page";
+import SignupPage from "./Signup.Page";
 
-interface Props{
+interface Props {}
 
-}
+const Auth: React.FC<Props> = (props) => {
+  return (
+    <div className="flex lg:flex-row lg:justify-between">
+      <Switch>
+        <Route path="/login" exact>
+          <LoginPage />
+        </Route>
+        <Route path="/sign" exact>
+          <SignupPage />
+        </Route>
+      </Switch>
 
-const Auth:React.FC<Props>=(props) => {
-    return(
-        <div className="flex lg:flex-row lg:justify-between">
-            <Switch>
-                <Route path="/login" exact>
-                    <LoginPage />
-                </Route>
-                <Route path="/sign" exact>
-                    <SignupPage />
-                </Route>
+      <AuthHero />
+    </div>
+  );
+};
 
-            </Switch>
-       
-       <AuthHero/>
-       </div>
-    );
-
-}
-
-Auth.defaultProps={
-    
-}
+Auth.defaultProps = {};
 export default memo(Auth);

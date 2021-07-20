@@ -1,18 +1,10 @@
-import React, { memo } from 'react';
+import React, { memo } from "react";
 
-interface Props{
+interface Props {}
 
-}
+const TopNav: React.FC<Props> = (props) => {
+  return <div className="bg-gray-200 w-screen h-16 absolute"></div>;
+};
 
-const TopNav:React.FC<Props>=(props) => {
-    return(
-        <div className="bg-gray-200 w-screen h-16 absolute">
-        </div>
-    );
-
-}
-
-TopNav.defaultProps={
-    
-}
+TopNav.defaultProps = {};
 export default memo(TopNav);
