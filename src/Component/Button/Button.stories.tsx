@@ -2,7 +2,7 @@ import Button from "./Button";
 import "../../index.css";
 import { HiLockClosed, HiLogin, HiMoon } from "react-icons/hi";
 
-const Icons = {lock: HiLockClosed,login : HiLogin};
+const Icons = { lock: HiLockClosed, login: HiLogin };
 export default {
   title: "Button",
   component: Button,
@@ -21,7 +21,6 @@ export default {
     },
     theme: {
       control: { type: "select" },
-      
     },
   },
 };

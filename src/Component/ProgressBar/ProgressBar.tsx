@@ -26,11 +26,9 @@ const ProgressBar: FC<Props> = ({ progress, className }) => {
     colorTheme = "bg-blue-400 ";
   } else if (progress > 10) {
     colorTheme = "bg-blue-600 ";
+  } else {
+    colorTheme = "bg-black";
   }
-  else
-  {
-      colorTheme ="bg-black"
-      }
 
   return (
     <div className={"h-4 bg-gray-200 rounded-full mx-16 " + className}>

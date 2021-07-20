@@ -41,36 +41,42 @@ const Alert: React.FC<Props> = ({
         "-500 hover:bg-" +
         themeClasses +
         "-300";
-const[show,setShow] = useState("flex")
+  const [show, setShow] = useState("flex");
   var IconthemeClasses =
     fill === "solid"
       ? " text-" + themeClasses + "-900"
       : " text-" + themeClasses + "-600";
-    const unmount = () => {
-      setShow("hidden")
+  const unmount = () => {
+    setShow("hidden");
   };
-    return (
-      <div>
-    <div
-      className={
-        "flex flex-row justify-between w-full px-3 py-2 text-md rounded-md " +
-        alertTypeClasses +
-        " " +
-              className +
-              " " +
-              show
-      }
-    >
-      <div>{children}</div>
-      <button onClick={unmount}>
-        <HiX className={"h-6 w-6 " + IconthemeClasses}></HiX>
-          </button>
-        
-      </div>
-            <button onClick={() => { setShow("flex") }} className={(show === "hidden" ? "block ml-96 bg-red-400   px-10 py-2" : "hidden")}>
+  return (
+    <div>
+      <div
+        className={
+          "flex flex-row justify-between w-full px-3 py-2 text-md rounded-md " +
+          alertTypeClasses +
+          " " +
+          className +
+          " " +
           show
-      </button>
+        }
+      >
+        <div>{children}</div>
+        <button onClick={unmount}>
+          <HiX className={"h-6 w-6 " + IconthemeClasses}></HiX>
+        </button>
       </div>
+      <button
+        onClick={() => {
+          setShow("flex");
+        }}
+        className={
+          show === "hidden" ? "block ml-96 bg-red-400   px-10 py-2" : "hidden"
+        }
+      >
+        show
+      </button>
+    </div>
   );
 };
 

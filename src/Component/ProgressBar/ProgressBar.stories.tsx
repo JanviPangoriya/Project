@@ -19,6 +19,6 @@ export default {
 export const main = (args: any) => <ProgressBar {...args}></ProgressBar>;
 
 main.args = {
-    progress: 50,
-    className:""
+  progress: 50,
+  className: "",
 };

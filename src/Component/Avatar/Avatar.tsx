@@ -36,10 +36,9 @@ const Avatar: React.FC<Props> = ({ status, size, className }) => {
       {status && (
         <div
           className={
-                      "border-white rounded-full inline-block relative " +
-                       IconColorTheme+
+            "border-white rounded-full inline-block relative " +
+            IconColorTheme +
             IconSizeTheme
-           
           }
         ></div>
       )}
