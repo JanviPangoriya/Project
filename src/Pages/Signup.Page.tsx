@@ -54,7 +54,7 @@ const Signup: React.FC<Props> = (props) => {
               <Input
                 touched={myform.touched.username}
                 error={myform.errors.username}
-                text="username"
+                placeholder="username"
                 id="username"
                 type="username"
                 required
@@ -65,7 +65,7 @@ const Signup: React.FC<Props> = (props) => {
               <Input
                 touched={myform.touched.email}
                 error={myform.errors.email}
-                text="Email address"
+                placeholder="Email address"
                 id="email-address"
                 type="email"
                 autoComplete="email"
@@ -78,7 +78,7 @@ const Signup: React.FC<Props> = (props) => {
               <Input
                 touched={myform.touched.password}
                 error={myform.errors.password}
-                text="Password"
+                placeholder="Password"
                 id="password"
                 type="password"
                 autoComplete="new-password"

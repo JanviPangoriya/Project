@@ -6,7 +6,6 @@ import { FaSpinner } from "react-icons/fa";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import Input from "../Component/Input/Input";
-import Button from "../Component/Button/Button";
 
 interface Props {}
 const Login: React.FC<Props> = (props) => {
