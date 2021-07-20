@@ -51,7 +51,7 @@ const Login: React.FC<Props> = (props) => {
               <Input
                 touched={myform.touched.email}
                 error={myform.errors.email}
-                text="Email address"
+                placeholder="Email address"
                 id="email-address"
                 type="email"
                 autoComplete="email"
@@ -64,7 +64,7 @@ const Login: React.FC<Props> = (props) => {
               <Input
                 touched={myform.touched.password}
                 error={myform.errors.password}
-                text="Password"
+                placeholder="Password"
                 id="password"
                 type="password"
                 autoComplete="current-password"
@@ -87,12 +87,11 @@ const Login: React.FC<Props> = (props) => {
                   className={
                     "w-20 px-3 mt-5 md:mt-0 py-1 rounded-md bg-blue-600 text-white font-semibold shadow-2xl hover:shadow-none "
                   }
-                  >
+                >
                   Log In
                 </button>
-
               </div>
-                  {/* <Button theme="secondary">Sign in </Button> */}
+              {/* <Button theme="secondary">Sign in </Button> */}
               <div className=" mt-16 mb-4">
                 <div className="flex flex-row justify-center items-center">
                   <label
