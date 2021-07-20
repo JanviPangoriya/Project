@@ -5,7 +5,7 @@ import { FaSpinner } from "react-icons/fa";
 import { HiLockClosed, HiUser } from "react-icons/hi";
 import { FaDotCircle } from "react-icons/fa";
 import { Link, useHistory } from "react-router-dom";
-import Input from "../Component/Input";
+import Input from "../Component/Input/Input";
 import * as yup from "yup";
 interface Props {}
 

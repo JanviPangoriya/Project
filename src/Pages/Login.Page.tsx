@@ -5,7 +5,8 @@ import { HiLockClosed, HiUser } from "react-icons/hi";
 import { FaSpinner } from "react-icons/fa";
 import * as yup from "yup";
 import { useFormik } from "formik";
-import Input from "../Component/Input";
+import Input from "../Component/Input/Input";
+import Button from "../Component/Button/Button";
 
 interface Props {}
 const Login: React.FC<Props> = (props) => {
@@ -72,7 +73,6 @@ const Login: React.FC<Props> = (props) => {
               >
                 <HiLockClosed className="mb-10 z-50 m-2 w-7 h-7 text-blue-500 absolute"></HiLockClosed>
               </Input>
-
               <div className="flex flex-col justify-start sm:flex-row sm:justify-between sm:items-center mt-5 ">
                 <div className="flex-row flex ">
                   <span className="mr-5">Show Password</span>
@@ -87,10 +87,12 @@ const Login: React.FC<Props> = (props) => {
                   className={
                     "w-20 px-3 mt-5 md:mt-0 py-1 rounded-md bg-blue-600 text-white font-semibold shadow-2xl hover:shadow-none "
                   }
-                >
+                  >
                   Log In
                 </button>
+
               </div>
+                  {/* <Button theme="secondary">Sign in </Button> */}
               <div className=" mt-16 mb-4">
                 <div className="flex flex-row justify-center items-center">
                   <label
