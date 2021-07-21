@@ -1,6 +1,5 @@
 import React, { memo } from "react";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
-import AvatarList from "./Component/AvatarList/AvatarList";
 import AppContainerPage from "./Pages/AppContainer.Page";
 import AuthPage from "./Pages/Auth.Page";
 import NotFound from "./Pages/NotFound";
@@ -10,7 +9,7 @@ interface Props {}
 const App: React.FC<Props> = (props) => {
   return (
     <div>
-      {/* <BrowserRouter>
+      <BrowserRouter>
         <Switch>
           <Route path="/" exact>
             <Redirect to="/login"></Redirect>
@@ -32,8 +31,7 @@ const App: React.FC<Props> = (props) => {
             <NotFound />
           </Route>
         </Switch>
-      </BrowserRouter> */}
-      <AvatarList avatarlength ={5}/>
+      </BrowserRouter>
     </div>
   );
 };
