@@ -5,7 +5,7 @@ const image =
 interface Props {
     avatarlength: number;
 }
-const AvatarList: React.FC<Props> = ({ avatarlength }) => {
+const AvatarList: React.FC<Props> = ({ avatarlength, className }) => {
   function fillArray(value: string, len: number) {
     if (len == 0) return [];
     var a = [value];
@@ -19,7 +19,7 @@ const AvatarList: React.FC<Props> = ({ avatarlength }) => {
     remaining = avatarArray.length - 4;
   }
   return (
-    <div className="flex flex-row items-center mt-28 ml-10">
+    <div className="flex flex-row items-center mt-28 ">
       {avatarArray &&
         avatarArray.slice(0, 4).map((avatar, index) => (
           <div>
