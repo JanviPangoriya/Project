@@ -20,5 +20,6 @@ export const Main = (args:any) => <AvatarList {...args}>
 </AvatarList>
 
 Main.args = {
-  avatarlength:5,
+    avatarlength: 5,
+    className:""
 };

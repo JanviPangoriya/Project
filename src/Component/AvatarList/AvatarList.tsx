@@ -3,7 +3,8 @@ import React from "react";
 const image =
   "https://designreset.com/cork/ltr/demo4/assets/img/profile-12.jpeg";
 interface Props {
-    avatarlength: number;
+  avatarlength: number;
+    className?: string;
 }
 const AvatarList: React.FC<Props> = ({ avatarlength, className }) => {
   function fillArray(value: string, len: number) {
