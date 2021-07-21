@@ -23,7 +23,7 @@ const AvatarList: React.FC<Props> = ({ avatarlength, className }) => {
       <div className={"flex flex-row items-center mt-28 "+className}>
       {avatarArray &&
         avatarArray.slice(0, 4).map((avatar, index) => (
-          <div>
+         
             <img
               src={avatar}
               key={index}
@@ -35,7 +35,6 @@ const AvatarList: React.FC<Props> = ({ avatarlength, className }) => {
                 " transform duration-1000 hover:-translate-y-4 rounded-full "
               }
             />
-          </div>
         ))}
       {remaining > 0 && (
         <div className="w-28 h-12 relative -left-32 border-2 border-gray-500  bg-white shadow-2xl font-medium text-blue-500 rounded-full flex items-center justify-center">
