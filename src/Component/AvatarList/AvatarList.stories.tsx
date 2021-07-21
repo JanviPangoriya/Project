@@ -9,7 +9,8 @@ export default {
       control: {
         type: "range",
         min: 0,
-        max: 10,
+        max: 15,
+        step: 1,
       },
     },
   },
@@ -21,5 +22,4 @@ export const Main = (args:any) => <AvatarList {...args}>
 
 Main.args = {
     avatarlength: 5,
-    className:""
 };
