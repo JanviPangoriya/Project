@@ -10,7 +10,7 @@ export default {
         type: "range",
         min: 0,
         step: 1,
-        max: 100,
+        max: 10,
       },
     },
   },

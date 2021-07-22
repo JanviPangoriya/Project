@@ -14,14 +14,34 @@ const Avatar: React.FC<Props> = ({ avatarlength }) => {
     return a;
   }
   var avatarArray = fillArray(image, avatarlength);
+  var remaining =0;
+  if (avatarlength > 0) {
+    remaining = avatarlength - 4;
+  }
   return (
     <>
-          <div className="relative flex flex-row items-center mt-12">
-        {avatarArray && avatarArray.slice(0, 4).map((avatar, index) => {
-          return <img src={avatar} alt="" className={"rounded-full relative "} style={{left: (index * -27)+"px"
-          }}/>;
-              })}
+      <div className="w-full relative flex flex-row items-center mt-12">
+        {avatarArray &&
+          avatarArray.slice(0, 4).map((avatar, index) => {
+            return (
+              <div>
+                <img
+                  src={avatar}
+                  alt=""
+                  className={"rounded-full relative "}
+                  style={{ left: index * -27 + "px" }}
+                />
+              </div>
+            );
+          })}
+        {remaining > 0 && (
+          <div className="w-28 h-12 relative -left-28 bg-white shadow-2xl font-medium rounded-full pt-3 pl-3">
+            {" "}
+            +{remaining} more
+          </div>)}
       </div>
+      
+    
     </>
   );
 };
