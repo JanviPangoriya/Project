@@ -17,9 +17,9 @@ const Avatar: React.FC<Props> = ({ avatarlength }) => {
   return (
     <>
           <div className="relative flex flex-row items-center mt-12">
-          {avatarArray && avatarArray.slice(0, 4).map((avatar, index) => {
-            return <img src={avatar} alt="" className={"rounded-full relative -left-"+ (index * 8)
-          }/>;
+        {avatarArray && avatarArray.slice(0, 4).map((avatar, index) => {
+          return <img src={avatar} alt="" className={"rounded-full relative "} style={{left: (index * -27)+"px"
+          }}/>;
               })}
       </div>
     </>
