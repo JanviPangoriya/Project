@@ -3,7 +3,7 @@ import "../../index.css"
 
 
 export default {
-  title: "Avatar Array",
+  title: "Avatar Stacked",
   component: Listavatar,
   argTypes: {
     avatarLength: {

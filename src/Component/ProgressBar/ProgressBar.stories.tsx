@@ -20,5 +20,6 @@ export const main = (args: any) => <ProgressBar {...args}></ProgressBar>;
 
 main.args = {
   progress: 50,
+  colorTheme: "bg-red-700",
   className: "",
 };
