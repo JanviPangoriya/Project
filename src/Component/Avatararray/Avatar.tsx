@@ -28,14 +28,14 @@ const Avatar: React.FC<Props> = ({ avatarlength }) => {
                 <img
                   src={avatar}
                   alt=""
-                  className={"rounded-full relative "}
+                  className={"rounded-full relative border-2 border-gray-400 transform duration-1000 hover:-translate-y-4"}
                   style={{ left: index * -27 + "px" }}
                 />
               </div>
             );
           })}
         {remaining > 0 && (
-          <div className="w-28 h-12 relative -left-28 bg-white shadow-2xl font-medium rounded-full pt-3 pl-3">
+          <div className="w-28 h-12 relative -left-28 bg-white shadow-2xl font-medium rounded-full pt-2 pl-3 border-4 border-gray-100">
             {" "}
             +{remaining} more
           </div>)}
