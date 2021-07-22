@@ -20,4 +20,5 @@ export default {
 export const main = (args: any) => <Listavatar {...args}></Listavatar>;
 
 main.args = {
+  avatarLength:5,
 };
