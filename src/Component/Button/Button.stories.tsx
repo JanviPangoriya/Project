@@ -1,15 +1,12 @@
 import Button from "./Button";
 import "../../index.css";
-import { HiLockClosed, HiLogin, HiMoon } from "react-icons/hi";
+import { HiLockClosed, HiLogin} from "react-icons/hi";
 
 const Icons = { lock: HiLockClosed, login: HiLogin };
 export default {
   title: "Button",
   component: Button,
   argTypes: {
-    type: {
-      control: { type: "select" },
-    },
     Icon: {
       control: { type: "select" },
       options: Object.keys(Icons),
@@ -31,7 +28,6 @@ export const Main: any = Template.bind({});
 Main.args = {
   children: "Sign in",
   className: "",
-  type: "submit",
   theme: "info",
   fill: "solid",
   Icon: HiLockClosed,

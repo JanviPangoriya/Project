@@ -16,36 +16,36 @@ const Alert: React.FC<Props> = ({
   className,
   ...rest
 }) => {
-  var themeClasses = "";
+  var solidtheme = "";
+  var outlinetheme = "";
+  var Icontheme = "";
   if (theme === "alert") {
-    themeClasses = "blue";
+    outlinetheme =
+      " text-gray-600 hover:text-gray-500 border-2 border-blue-500 ";
+    solidtheme = " bg-blue-200 text-blue-500 hover:bg-blue-300 ";
+    Icontheme = " text-blue-700";
   } else if (theme === "success") {
-    themeClasses = "green";
+    outlinetheme =
+      " text-gray-600 hover:text-gray-500 border-2 border-green-500 ";
+    solidtheme = " bg-green-200 text-green-500 hover:bg-green-300 ";
+    Icontheme = " text-green-700";
   } else if (theme === "info") {
-    themeClasses = "gray";
+    outlinetheme =
+      " text-gray-600 hover:text-gray-500 border-2 border-gray-500 ";
+    solidtheme = " bg-gray-200 text-gray-500 hover:bg-gray-300 ";
+    Icontheme = " text-gray-700";
   } else if (theme === "warning") {
-    themeClasses = "yellow";
+    outlinetheme =
+      " text-gray-600 hover:text-gray-500 border-2 border-yellow-500 ";
+    solidtheme = " bg-yellow-200 text-yellow-500 hover:bg-yellow-300 ";
+    Icontheme = " text-yellow-700";
   } else {
-    themeClasses = "red";
+    outlinetheme =
+      " text-gray-600 hover:text-gray-500 border-2 border-red-500 ";
+    solidtheme = " bg-red-200 text-red-500 hover:bg-red-300 ";
+    Icontheme = " text-red-700";
   }
-
-  var alertTypeClasses =
-    fill === "outline"
-      ? " text-gray-600 hover:text-gray-500 border-2 border-" +
-        themeClasses +
-        "-500 "
-      : " bg-" +
-        themeClasses +
-        "-200 text-" +
-        themeClasses +
-        "-500 hover:bg-" +
-        themeClasses +
-        "-300";
   const [show, setShow] = useState("flex");
-  var IconthemeClasses =
-    fill === "solid"
-      ? " text-" + themeClasses + "-900"
-      : " text-" + themeClasses + "-600";
   const unmount = () => {
     setShow("hidden");
   };
@@ -54,7 +54,7 @@ const Alert: React.FC<Props> = ({
       <div
         className={
           "flex flex-row justify-between w-full px-3 py-2 text-md rounded-md " +
-          alertTypeClasses +
+          (fill === "solid" ? solidtheme : outlinetheme) +
           " " +
           className +
           " " +
@@ -63,7 +63,7 @@ const Alert: React.FC<Props> = ({
       >
         <div>{children}</div>
         <button onClick={unmount}>
-          <HiX className={"h-6 w-6 " + IconthemeClasses}></HiX>
+          <HiX className={"h-6 w-6 " + Icontheme}></HiX>
         </button>
       </div>
       <button

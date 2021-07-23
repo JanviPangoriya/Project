@@ -6,7 +6,6 @@ import { HiLockClosed } from "react-icons/hi";
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   theme?: "alert" | "success" | "info" | "warning" | "error";
   children: string;
-  type?: "submit" | "reset" | "button";
   Icon?: IconType;
   fill: "solid" | "outline";
 }
@@ -19,43 +18,43 @@ const Button: React.FC<Props> = ({
   fill,
   ...rest
 }) => {
-  var themeClasses = "";
+  var solidtheme = "";
+  var outlinetheme = "";
+  var Icontheme = "";
   if (theme === "alert") {
-    themeClasses = "blue";
+    outlinetheme =
+      " text-gray-600 hover:text-gray-500 border-2 border-blue-500 ";
+    solidtheme = " bg-blue-200 text-blue-500 hover:bg-blue-300 ";
+    Icontheme = " text-blue-700";
   } else if (theme === "success") {
-    themeClasses = "green";
+    outlinetheme =
+      " text-gray-600 hover:text-gray-500 border-2 border-green-500 ";
+    solidtheme = " bg-green-200 text-green-500 hover:bg-green-300 ";
+    Icontheme = " text-green-700";
   } else if (theme === "info") {
-    themeClasses = "gray";
+    outlinetheme =
+      " text-gray-600 hover:text-gray-500 border-2 border-gray-500 ";
+    solidtheme = " bg-gray-200 text-gray-500 hover:bg-gray-300 ";
+    Icontheme = " text-gray-700";
   } else if (theme === "warning") {
-    themeClasses = "yellow";
+    outlinetheme =
+      " text-gray-600 hover:text-gray-500 border-2 border-yellow-500 ";
+    solidtheme = " bg-yellow-200 text-yellow-500 hover:bg-yellow-300 ";
+    Icontheme = " text-yellow-700";
   } else {
-    themeClasses = "red";
+    outlinetheme =
+      " text-gray-600 hover:text-gray-500 border-2 border-red-500 ";
+    solidtheme = " bg-red-200 text-red-500 hover:bg-red-300 ";
+    Icontheme = " text-red-700";
   }
 
-  var buttonTypeClasses =
-    fill === "outline"
-      ? " text-gray-600 hover:text-gray-500 border-2 border-" +
-        themeClasses +
-        "-500 "
-      : " bg-" +
-        themeClasses +
-        "-200 text-" +
-        themeClasses +
-        "-500 hover:bg-" +
-        themeClasses +
-        "-300";
-
-  var IconThemeClasses =
-    fill === "solid"
-      ? " text-" + themeClasses + "-700"
-      : " text-" + themeClasses + "-600";
   return (
     <>
       <button
         {...rest}
         className={
           "group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 " +
-          buttonTypeClasses +
+          (fill === "solid" ? solidtheme : outlinetheme) +
           " " +
           className
         }
@@ -63,12 +62,16 @@ const Button: React.FC<Props> = ({
         {Icon && (
           <span className="absolute left-0 inset-y-0 flex items-center pl-3">
             <Icon
-              className={"z-50 m-2 w-7 h-7  absolute " + IconThemeClasses}
+              className={
+                "z-50 m-2 w-7 h-7  absolute " +Icontheme
+              }
               aria-hidden="true"
             ></Icon>
           </span>
         )}
-        Sign in
+        <span className={Icontheme}>
+          {children}
+        </span>
       </button>
     </>
   );
@@ -77,5 +80,6 @@ const Button: React.FC<Props> = ({
 Button.defaultProps = {
   theme: "info",
   fill: "solid",
+  Icon: HiLockClosed,
 };
 export default Button;
