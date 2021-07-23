@@ -13,6 +13,9 @@ export default {
         max: 100,
       },
     },
+    theme: {
+      control: { type: "select" },
+    },
   },
 };
 
@@ -20,6 +23,5 @@ export const main = (args: any) => <ProgressBar {...args}></ProgressBar>;
 
 main.args = {
   progress: 50,
-  colorTheme: "bg-red-700",
-  className: "",
+  theme: "info",
 };

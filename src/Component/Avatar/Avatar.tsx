@@ -1,15 +1,15 @@
 import React from "react";
 
 interface Props {
-  status?: "offline" | "online";
+  status: "offline" | "online" | "undefined";
   size: "large" | "medium" | "small";
-  className?: string;
+  image: string;
 }
 
-const Avatar: React.FC<Props> = ({ status, size, className }) => {
+const Avatar: React.FC<Props> = ({ image, status, size }) => {
   var sizeTheme;
   if (size === "large") sizeTheme = " h-28 w-28 ";
-  else if (size === "medium") sizeTheme = " h-16 w-16 ";
+  else if (size === "medium") sizeTheme = " h-20 w-20 ";
   else sizeTheme = " h-12 w-12 ";
 
   var IconSizeTheme;
@@ -23,17 +23,10 @@ const Avatar: React.FC<Props> = ({ status, size, className }) => {
   else if (status === "online") IconColorTheme = " bg-green-400 ";
 
   return (
-    <div
-      className={
-        " flex justify-center items-end w-full relative mt-16 " + className
-      }
-    >
-      <img
-        className={sizeTheme + " rounded-full "}
-        src="https://designreset.com/cork/ltr/demo4/assets/img/profile-12.jpeg"
-      />
+    <div className={" flex justify-center items-end w-full relative mt-16 "}>
+      <img className={sizeTheme + " rounded-full "} src={image} />
 
-      {status && (
+      {status!="undefined" && (
         <div
           className={
             "border-white rounded-full inline-block relative " +
@@ -47,7 +40,5 @@ const Avatar: React.FC<Props> = ({ status, size, className }) => {
 };
 
 Avatar.defaultProps = {
-  status: undefined,
-  size: "large",
 };
 export default Avatar;
