@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { memo } from "react";
 import { Link } from "react-router-dom";
+import { fetchGroups } from "../api";
 
 interface Props {}
 
 const Dashboard: React.FC<Props> = (props) => {
+  const [query, setQuery] = useState("");
+  useEffect(()=>
+  {
+    fetchGroups({ status: "all-groups" ,query });
+    },[query])
   return (
     <div className="pt-10">
       <div className="text-gray-800 pt-80 pl-20 font-bold">
