@@ -6,6 +6,7 @@ import { FaSpinner } from "react-icons/fa";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import Input from "../Component/Input/Input";
+import { login } from "../api";
 
 interface Props {}
 const Login: React.FC<Props> = (props) => {
@@ -19,13 +20,13 @@ const Login: React.FC<Props> = (props) => {
       email: yup.string().required("Email is required field").email(),
       password: yup.string().required().min(6),
       // ,({min}) =>
-      // "Password should have atleset "+min+" characters."
+      // "Password should have atleast "+min+" characters."
     }),
     onSubmit: (data) => {
-      console.log("form submitting ", data);
-      setTimeout(() => {
+      login(data).then(() =>
+      {
         history.push("/dashboard");
-      }, 5000);
+      });
     },
   });
 
