@@ -26,8 +26,8 @@ const Card: React.FC<Props> = ({
         className={
           "flex flex-row space-y-2 items-center justify-center h-full py-4 " +
           (index % 2 === 1
-            ? "bg-yellow-300 border-red-700 text-white hover:bg-yellow-100 hover:text-red-700"
-            : "bg-gray-700 border-black hover:bg-gray-400 ") +
+            ? "bg-yellow-200 border-red-700 text-black hover:bg-yellow-100 hover:text-red-700"
+            : "bg-gray-500 border-black hover:bg-gray-400 ") +
           " rounded-xl space-x-10 border-4 "
         }
       >
@@ -42,7 +42,7 @@ const Card: React.FC<Props> = ({
           <p className="w-full text-xl  mb-4 font-semibold uppercase ">
             {name}
           </p>
-          <p className="w-full pb-4 text-md tracking-wide leading-tight ">
+          <p className="w-full pb-4 text-md tracking-wide leading-tight pr-4 ">
             {description}
           </p>
           <div className="rounded w-full ">

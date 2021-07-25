@@ -10,8 +10,9 @@ interface Props {}
 const Dashboard: React.FC<Props> = (props) => {
   const [query, setQuery] = useState("");
   const [group, setGroup] = useState<any>([]);
+  const [offset, setOffset] = useState(0);
   useEffect(() => {
-    fetchGroups({ status: "all-groups", query:query})
+    fetchGroups({ status: "all-groups", query:query,offset:offset})
       .then((response) => {
         console.log(response);
         setGroup(response);
@@ -19,7 +20,7 @@ const Dashboard: React.FC<Props> = (props) => {
       .catch((error) => {
         console.log(error);
       });
-  }, [query]);
+  }, [query,offset]);
   var value = "";
   const change = (e:any) => {
     value = e.currentTarget.value;
@@ -64,6 +65,36 @@ const Dashboard: React.FC<Props> = (props) => {
             </>
           );
         })}
+        <div className="flex flex-row justify-between items-center mx-4">
+          <button
+            className={
+              "px-5 my-2 uppercase rounded-full h-12  " +
+              (offset < 20 ? "bg-gray-200 text-black " : "bg-red-500 text-white ")
+            }
+            disabled={offset < 20 ? true : false}
+            onClick={() => {
+              setOffset(offset - 20);
+            }}
+          >
+            Previous
+          </button>
+          <button
+            className={
+              "px-5 my-2 uppercase rounded-full h-12 " +
+              (offset >= 20
+                ? "bg-gray-200 text-black"
+                : "bg-red-500 text-white ")
+            }
+            disabled={offset >= 20 ? true : false}
+            onClick={() => {
+              console.log("Dsadsa" + offset);
+              setOffset(offset + 20);
+              console.log(offset);
+            }}
+          >
+            Next
+          </button>
+        </div>
       </div>
     </>
   );
