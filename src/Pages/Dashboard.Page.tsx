@@ -3,7 +3,6 @@ import { memo } from "react";
 import { FaSearch } from "react-icons/fa";
 import { fetchGroups } from "../api";
 import Card from "../Component/Card";
-import Toggle from "../Component/Toggle";
 
 interface Props {}
 

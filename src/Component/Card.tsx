@@ -34,7 +34,7 @@ const Card: React.FC<Props> = ({
         <div className="w-auto ">
           <img
             className="flex-1 rounded-lg  border-2 border-white w-32 h-32 ml-2 sm:ml-0"
-            src="https://www.w3schools.com/howto/img_avatar2.png"
+            src="https://www.w3schools.com/howto/img_avatar2.png" alt="sample image"
           />
           {/* </object> */}
         </div>
