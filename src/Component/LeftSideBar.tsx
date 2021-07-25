@@ -1,19 +1,21 @@
 import React from "react";
 import { memo } from "react";
-import { useHistory } from "react-router-dom";
 import { logout } from "../api";
 
 interface Props {}
 
 const LeftSideBar: React.FC<Props> = (props) => {
-  const history = useHistory();
   return (
-    <div>
-      <div className="h-screen pt-10 w-1/5 bg-gray-500"></div>
-      <button onClick = {() => {
-        logout();
-        window.location.href = "/login";
-      }}>Logout</button>
+    <div className="hidden md:block fixed h-screen mt-16 w-60 bg-gray-500">
+      <button
+        className="py-3 px-10 bg-red-400 rounded-full absolute bottom-24 left-10"
+        onClick={() => {
+          logout();
+          window.location.href = "/login";
+        }}
+      >
+        Logout
+      </button>
     </div>
   );
 };

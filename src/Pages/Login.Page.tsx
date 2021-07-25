@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { memo } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { HiLockClosed, HiUser } from "react-icons/hi";
@@ -7,9 +7,11 @@ import * as yup from "yup";
 import { useFormik } from "formik";
 import Input from "../Component/Input/Input";
 import { login } from "../api";
+import { Switch } from "@headlessui/react";
 
 interface Props {}
 const Login: React.FC<Props> = (props) => {
+    const [enabled, setEnabled] = useState(false);
   const history = useHistory();
   const myform = useFormik({
     initialValues: {
@@ -66,7 +68,7 @@ const Login: React.FC<Props> = (props) => {
                 error={myform.errors.password}
                 placeholder="Password"
                 id="password"
-                type="password"
+                type={enabled ? "text" : "password"}
                 autoComplete="current-password"
                 required
                 {...myform.getFieldProps("password")}
@@ -74,12 +76,24 @@ const Login: React.FC<Props> = (props) => {
                 <HiLockClosed className="mb-10 z-50 m-2 w-7 h-7 text-blue-500 absolute"></HiLockClosed>
               </Input>
               <div className="flex flex-col justify-start sm:flex-row sm:justify-between sm:items-center mt-5 ">
-                <div className="flex-row flex ">
-                  <span className="mr-5">Show Password</span>
-                  <div className="relative">
-                    <div className="w-10 h-4 bg-gray-400 rounded-full shadow-inner"></div>
-                    <div className="absolute w-6 h-6 bg-white rounded-full shadow -left-1 -top-1 transition"></div>
-                  </div>
+                <div className="mt-2">
+                  <span className="">Show Password </span>
+                  <Switch
+                    checked={enabled}
+                    onChange={setEnabled}
+                    className={`${
+                      enabled ? "bg-blue-600 " : "bg-gray-200 "
+                    } relative inline-flex items-center h-5 rounded-full w-10 ml-5 `}
+                  >
+                    <span className="sr-only">Enable notifications</span>
+                    <span
+                      className={`${
+                        enabled
+                          ? "translate-x-6 bg-white"
+                          : "translate-x-0 bg-blue-500"
+                      } inline-block w-4 h-4 transform  rounded-full`}
+                    />
+                  </Switch>
                 </div>
                 <button
                   disabled={!myform.isValid}
