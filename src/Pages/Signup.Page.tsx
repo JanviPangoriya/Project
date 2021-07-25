@@ -1,15 +1,17 @@
 import { useFormik } from "formik";
-import React from "react";
+import React, { useState } from "react";
 import { memo } from "react";
-import { FaSpinner } from "react-icons/fa";
-import { HiLockClosed, HiUser } from "react-icons/hi";
-import { FaDotCircle } from "react-icons/fa";
+import { FaUserCircle, FaSpinner } from "react-icons/fa";
+import { RiLockPasswordLine } from "react-icons/ri";
+import { MdEmail } from "react-icons/md";
 import { Link, useHistory } from "react-router-dom";
 import Input from "../Component/Input/Input";
 import * as yup from "yup";
+import { Switch } from "@headlessui/react";
 interface Props {}
 
 const Signup: React.FC<Props> = (props) => {
+  const [enabled, setEnabled] = useState(false);
   const history = useHistory();
   const myform = useFormik({
     initialValues: {
@@ -54,13 +56,13 @@ const Signup: React.FC<Props> = (props) => {
               <Input
                 touched={myform.touched.username}
                 error={myform.errors.username}
-                placeholder="username"
+                placeholder="Username"
                 id="username"
                 type="username"
                 required
                 {...myform.getFieldProps("username")}
               >
-                <FaDotCircle className="mb-10 z-50 m-2 w-7 h-7 text-blue-500 absolute"></FaDotCircle>
+                <FaUserCircle className="mb-10 z-50 m-2 w-7 h-7 text-blue-500 absolute"></FaUserCircle>
               </Input>
               <Input
                 touched={myform.touched.email}
@@ -72,7 +74,8 @@ const Signup: React.FC<Props> = (props) => {
                 required
                 {...myform.getFieldProps("email")}
               >
-                <HiUser className="mb-10 z-50 m-2 w-7 h-7 text-blue-500 absolute"></HiUser>
+                
+                <MdEmail className="mb-10 z-50 m-2 w-7 h-7 text-blue-500 absolute"></MdEmail>
               </Input>
 
               <Input
@@ -80,12 +83,12 @@ const Signup: React.FC<Props> = (props) => {
                 error={myform.errors.password}
                 placeholder="Password"
                 id="password"
-                type="password"
+                type={enabled ? "text" : "password"}
                 autoComplete="new-password"
                 required
                 {...myform.getFieldProps("password")}
               >
-                <HiLockClosed className="mb-10 z-50 m-2 w-7 h-7 text-blue-500 absolute"></HiLockClosed>
+                <RiLockPasswordLine className="mb-10 z-50 m-2 w-7 h-7 text-blue-500 absolute"></RiLockPasswordLine>
               </Input>
               <div className=" mt-2 mb-4">
                 <div className="flex flex-row justify-start items-left">
@@ -104,12 +107,24 @@ const Signup: React.FC<Props> = (props) => {
                 </div>
               </div>
               <div className="flex flex-col justify-start sm:flex-row sm:justify-between sm:items-center mt-5 ">
-                <div className="flex-row flex ">
-                  <span className="mr-5 text-gray-600">Show Password</span>
-                  <div className="relative">
-                    <div className="mt-2 w-10 h-4 bg-gray-200 rounded-full shadow-inner"></div>
-                    <div className="absolute mt-2.5 w-5 h-5 bg-blue-500 rounded-full shadow -left-1 -top-1 transition"></div>
-                  </div>
+                <div className="mt-2">
+                  <span className="">Show Password</span>
+                  <Switch
+                    checked={enabled}
+                    onChange={setEnabled}
+                    className={`${
+                      enabled ? "bg-blue-600 " : "bg-gray-200 "
+                    } relative inline-flex items-center h-5 rounded-full w-10 ml-5 `}
+                  >
+                    <span className="sr-only">Enable notifications</span>
+                    <span
+                      className={`${
+                        enabled
+                          ? "translate-x-6 bg-white"
+                          : "translate-x-0 bg-blue-500"
+                      } inline-block w-4 h-4 transform  rounded-full`}
+                    />
+                  </Switch>
                 </div>
 
                 <button

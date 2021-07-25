@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { memo } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { HiLockClosed, HiUser } from "react-icons/hi";
-import { FaSpinner } from "react-icons/fa";
+
+import { FaUserCircle, FaSpinner } from "react-icons/fa";
+import { RiLockPasswordLine } from "react-icons/ri";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import Input from "../Component/Input/Input";
@@ -60,7 +61,7 @@ const Login: React.FC<Props> = (props) => {
                 required
                 {...myform.getFieldProps("email")}
               >
-                <HiUser className="mb-10 z-50 m-2 w-7 h-7 text-blue-500 absolute"></HiUser>
+                <FaUserCircle className="mb-10 z-50 m-2 w-7 h-7 text-blue-500 absolute"></FaUserCircle>
               </Input>
 
               <Input
@@ -73,7 +74,7 @@ const Login: React.FC<Props> = (props) => {
                 required
                 {...myform.getFieldProps("password")}
               >
-                <HiLockClosed className="mb-10 z-50 m-2 w-7 h-7 text-blue-500 absolute"></HiLockClosed>
+                <RiLockPasswordLine className="mb-10 z-50 m-2 w-7 h-7 text-blue-500 absolute"></RiLockPasswordLine>
               </Input>
               <div className="flex flex-col justify-start sm:flex-row sm:justify-between sm:items-center mt-5 ">
                 <div className="mt-2">
@@ -126,7 +127,7 @@ const Login: React.FC<Props> = (props) => {
                 Forgot Password?
               </div>
               {myform.isSubmitting && (
-                <FaSpinner className="animate-spin mx-auto mt-2"></FaSpinner>
+                <FaSpinner  className="animate-spin mx-auto mt-2"></FaSpinner>
               )}
               <div className="mt-20 text-justify">
                 © 2020 All Rights Reserved.{" "}
