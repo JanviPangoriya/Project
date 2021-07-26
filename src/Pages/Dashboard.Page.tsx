@@ -11,7 +11,7 @@ const Dashboard: React.FC<Props> = (props) => {
   const [group, setGroup] = useState<any>([]);
   const [offset, setOffset] = useState(0);
   useEffect(() => {
-    fetchGroups({ status: "all-groups", query:query,offset:offset})
+    fetchGroups({ status: "all-groups", query: query, offset: offset })
       .then((response) => {
         console.log(response);
         setGroup(response);
@@ -19,18 +19,18 @@ const Dashboard: React.FC<Props> = (props) => {
       .catch((error) => {
         console.log(error);
       });
-  }, [query,offset]);
+  }, [query, offset]);
   var value = "";
-  const change = (e:any) => {
+  const change = (e: any) => {
     value = e.currentTarget.value;
     click();
-  }
+  };
   const click = () => {
-     setQuery(value);
+    setQuery(value);
   };
   return (
     <>
-      <div className="relative mt-24 md:ml-60">
+      <div className="relative mt-20 md:ml-60">
         <label className="flex flex-row justify-between items-center">
           <input
             id="input"
@@ -45,30 +45,31 @@ const Dashboard: React.FC<Props> = (props) => {
           />
         </label>
 
-        {group.map((g: any, index: number) => {
-          return (
-            <>
-              <Card
-                key={index}
-                index={index}
-                group_image_url={
-                  g.group_image_url === null
-                    ? "https://www.w3schools.com/howto/img_avatar2.png"
-                    : g.group_image_url
-                }
-                description={g.description}
-                name={g.name}
-                creator={g.creator}
-                state={g.state}
-              />
-            </>
-          );
-        })}
+        {group &&
+          group.map((g: any, index: number) => {
+            return (
+              <>
+                <Card
+                  key={index}
+                  index={index}
+                  group_image_url={
+                    g.group_image_url === null ? "https://designreset.com/cork/ltr/demo4/assets/img/profile-12.jpeg" : g.group_image_url
+                  }
+                  description={g.description}
+                  name={g.name}
+                  creator={g.creator}
+                  state={g.state}
+                />
+              </>
+            );
+          })}
         <div className="flex flex-row justify-between items-center mx-4">
           <button
             className={
               "px-5 my-2 uppercase rounded-full h-12  " +
-              (offset < 20 ? "bg-gray-200 text-black " : "bg-red-500 text-white ")
+              (offset < 20
+                ? "bg-gray-200 text-black "
+                : "bg-red-500 text-white ")
             }
             disabled={offset < 20 ? true : false}
             onClick={() => {
