@@ -29,7 +29,7 @@ const TopNav: React.FC<Props> = (props) => {
           src="https://designreset.com/cork/ltr/demo4/assets/img/logo.svg "
           alt=""
         />
-        <div className="text-white absolute font-semibold left-16 text-3xl uppercase top-2.5 hidden md:block">
+        <div className="text-gray-200 absolute font-bold left-16 text-2xl uppercase top-3 hidden md:block">
           Cork
         </div>
         <div>
