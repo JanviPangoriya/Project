@@ -12,7 +12,7 @@ import { Switch } from "@headlessui/react";
 
 interface Props {}
 const Login: React.FC<Props> = (props) => {
-    const [enabled, setEnabled] = useState(false);
+  const [enabled, setEnabled] = useState(false);
   const history = useHistory();
   const myform = useFormik({
     initialValues: {
@@ -26,8 +26,7 @@ const Login: React.FC<Props> = (props) => {
       // "Password should have atleast "+min+" characters."
     }),
     onSubmit: (data) => {
-      login(data).then(() =>
-      {
+      login(data).then(() => {
         history.push("/dashboard");
       });
     },
@@ -36,7 +35,7 @@ const Login: React.FC<Props> = (props) => {
   return (
     <>
       <div className="lg:w-1/2">
-        <div className="mx-0 md:mx-20 text-gray-700">
+        <div className="mx-10 md:mx-20 text-gray-700">
           <div className="flex flex-col justify-center mt-10 py-3 px-11 ">
             <h1 className="text-4xl mb-2">
               Log In To <span className="uppercase text-blue-500">Devs</span>
@@ -81,6 +80,7 @@ const Login: React.FC<Props> = (props) => {
                   <span className="">Show Password </span>
                   <Switch
                     checked={enabled}
+                    type="button"
                     onChange={setEnabled}
                     className={`${
                       enabled ? "bg-blue-600 " : "bg-gray-200 "
@@ -107,7 +107,7 @@ const Login: React.FC<Props> = (props) => {
                 </button>
               </div>
               {/* <Button theme="secondary">Sign in </Button> */}
-              <div className=" mt-16 mb-4">
+              <div className=" mt-12 mb-4">
                 <div className="flex flex-row justify-center items-center">
                   <label
                     htmlFor="logeedIn"
@@ -124,12 +124,12 @@ const Login: React.FC<Props> = (props) => {
                 </div>
               </div>
               <div className="text-center mt-4 text-blue-500 font-bold text-md">
-                Forgot Password?
+                <Link to="/forgot">Forgot Password?</Link>
               </div>
               {myform.isSubmitting && (
-                <FaSpinner  className="animate-spin mx-auto mt-2"></FaSpinner>
+                <FaSpinner className="animate-spin mx-auto mt-2"></FaSpinner>
               )}
-              <div className="mt-20 text-justify">
+              <div className="mt-16  pt-2 text-justify">
                 © 2020 All Rights Reserved.{" "}
                 <span className="text-blue-500 font-bold text-md">
                   Devslane
