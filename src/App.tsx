@@ -1,4 +1,4 @@
-import React, { lazy, memo, Suspense, useEffect, useState } from "react";
+import React, {  memo, Suspense, useEffect, useState } from "react";
 import { FaSpinner } from "react-icons/fa";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import { me } from "./api/auth";
@@ -18,7 +18,7 @@ const App: React.FC<Props> = (props) => {
     if (!token) return;
 
     me().then((u) => setUser(u));
-  }, []);
+  },);
 
   if (!user && token) {
     return <div>Loading...</div>;
