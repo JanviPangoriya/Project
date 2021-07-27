@@ -21,7 +21,7 @@ const Card: React.FC<Props> = ({
   group_image_url,
 }) => {
   return (
-    <div className="max-w-11/12 ml-5 mr-3 sm:ml-7 justify-center mb-4">
+    <div className="ml-5 mr-3 sm:ml-7 justify-center w-96 mb-4">
       <div
         className={
           "flex flex-row space-y-2 items-center justify-center h-32 py-4 " +
@@ -31,11 +31,11 @@ const Card: React.FC<Props> = ({
           " rounded-xl space-x-10 border-4 "
         }
       >
-        <div className="w-auto ">
+        <div className="">
           <object
             data={group_image_url}
             type="image/png"
-            className="w-24 h-24 rounded-full ml-1 sm:ml-0"
+            className="w-24 h-24 rounded-full ml-3 sm:ml-1"
           >
             <img
               src="https://designreset.com/cork/ltr/demo4/assets/img/profile-12.jpeg"

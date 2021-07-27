@@ -20,13 +20,9 @@ const Dashboard: React.FC<Props> = (props) => {
         console.log(error);
       });
   }, [query, offset]);
-  var value = "";
   const change = (e: any) => {
-    value = e.currentTarget.value;
-    click();
-  };
-  const click = () => {
-    setQuery(value);
+    setQuery(e.currentTarget.value);
+
   };
   return (
     <>
@@ -35,13 +31,12 @@ const Dashboard: React.FC<Props> = (props) => {
           <input
             id="input"
             type="text"
-            className="max-w-screen ml-5 sm:ml-8  justify-center mb-4 border-4 w-11/12 h-12 px-5 placeholder-black "
+            className="max-w-screen ml-5 sm:ml-8  justify-center mb-4 border-4 w-96 h-12 px-5 placeholder-black "
             placeholder="Search"
             onChange={change}
           />
           <FaSearch
-            className=" absolute right-10  lg:right-12 top-4 w-5 h-5 text-gray-300 "
-            onClick={click}
+            className=" absolute right-5 top-4 w-5 h-5 text-gray-300 "
           />
         </label>
 
