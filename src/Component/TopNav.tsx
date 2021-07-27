@@ -77,18 +77,17 @@ const TopNav: React.FC<Props> = (props) => {
                   }}
                 ></div>
                 <Menu.Item>
-                  <a href="#" className="flex px-4 py-1.5 hover:text-blue-500">
+                  <div className="flex px-4 py-1.5 hover:text-blue-500">
                     <img
                       src={deFlag}
                       className="w-5 h-5 mr-4"
                       alt="German Flag"
                     />
                     <p>German</p>
-                  </a>
+                  </div>
                 </Menu.Item>
                 <Menu.Item>
-                  <a
-                    href="google.com"
+                  <div
                     className="flex px-4 py-1.5 hover:text-blue-500"
                   >
                     <img
@@ -97,7 +96,7 @@ const TopNav: React.FC<Props> = (props) => {
                       alt="German Flag"
                     />
                     <p>Japanese</p>
-                  </a>
+                  </div>
                 </Menu.Item>
                 <Menu.Item>
                   <a
@@ -113,8 +112,7 @@ const TopNav: React.FC<Props> = (props) => {
                   </a>
                 </Menu.Item>
                 <Menu.Item>
-                  <a
-                    href="google.com"
+                  <div
                     className="flex px-4 py-1.5 hover:text-blue-500"
                   >
                     <img
@@ -123,7 +121,7 @@ const TopNav: React.FC<Props> = (props) => {
                       alt="French Flag"
                     />
                     <p>English</p>
-                  </a>
+                  </div>
                 </Menu.Item>
               </Menu.Items>
             </Transition>
@@ -166,37 +164,33 @@ const TopNav: React.FC<Props> = (props) => {
                 ></div>
 
                 <Menu.Item>
-                  <a
-                    href="google.com"
+                  <div
                     className="flex px-4 py-2 hover:text-blue-500"
                   >
                     <AiOutlineUser className="mr-4 h-6 w-6" />
                     <p>Profile</p>
-                  </a>
+                  </div>
                 </Menu.Item>
                 <Menu.Item>
-                  <a
-                    href="google.com"
+                  <div
                     className="flex px-4 py-1.5 hover:text-blue-500"
                   >
                     <AiOutlineInbox className="mr-4 h-6 w-6" />
 
                     <p>Inbox</p>
-                  </a>
+                  </div>
                 </Menu.Item>
                 <Menu.Item>
-                  <a
-                    href="google.com"
+                  <div
                     className="flex px-4 py-1.5 hover:text-blue-500"
                   >
                     <VscLock className="mr-4 h-6 w-6" />
 
                     <p>Lock Screen</p>
-                  </a>
+                  </div>
                 </Menu.Item>
                 <Menu.Item>
-                  <a
-                    href="#"
+                  <div
                     className="flex px-4 py-1.5 hover:text-blue-500"
                     onClick={() => {
                       logout();
@@ -205,7 +199,7 @@ const TopNav: React.FC<Props> = (props) => {
                   >
                     <FaSignOutAlt className="mr-4 h-6 w-6 " />
                     <p> Sign Out </p>
-                  </a>
+                  </div>
                 </Menu.Item>
               </Menu.Items>
             </Transition>
