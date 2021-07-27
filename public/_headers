@@ -1,4 +1,5 @@
-/../*.css
-  cache-control: public, s-max-age=604800
+
 /../*.js
-  cache-control: public, s-max-age=604800
+  Cache-Control: public
+  Cache-Control: max-age=365000000
+  Cache-Control: immutable
