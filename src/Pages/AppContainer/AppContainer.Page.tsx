@@ -17,10 +17,10 @@ const AppContainer: React.FC<Props> = ({user}) => {
     <div>
       <TopNav />
       <div className="flex flex-row">
-        <LeftSideBar user={user} />
+        <LeftSideBar />
         <Switch>
           <Route path="/dashboard" exact>
-            <DashboardPage />
+            <DashboardPage user={user} />
           </Route>
           <Route path="/recordings" exact>
             <RecordingPage />

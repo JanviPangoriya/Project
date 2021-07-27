@@ -4,10 +4,13 @@ import { FaSearch } from "react-icons/fa";
 import { fetchGroups } from "../../api/group";
 
 import Card from "../../Component/Card";
+import { User } from "../../model/User";
 
-interface Props {}
+interface Props {
+  user: User;
+}
 
-const Dashboard: React.FC<Props> = (props) => {
+const Dashboard: React.FC<Props> = ({user}) => {
   const [query, setQuery] = useState("");
   const [group, setGroup] = useState<any>([]);
   const [offset, setOffset] = useState(0);
@@ -27,6 +30,9 @@ const Dashboard: React.FC<Props> = (props) => {
   return (
     <>
       <div className="relative mt-20 md:ml-60">
+        <div className="text-5xl ml-10 bg-gradient-to-tl from-red-600 to-gray-500 font-bold mb-2 bg-clip-text text-transparent">
+          Welcome {user.first_name} !!!
+        </div>
         <label className="flex flex-row justify-between items-center">
           <input
             id="input"
@@ -35,7 +41,7 @@ const Dashboard: React.FC<Props> = (props) => {
             placeholder="Search"
             onChange={change}
           />
-          <FaSearch className=" absolute right-5 top-4 w-5 h-5 text-gray-300 " />
+          <FaSearch className=" absolute right-5 top-16 mt-2 w-5 h-5 text-gray-300 " />
         </label>
 
         {group &&
