@@ -7,8 +7,8 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import Input from "../Component/Input/Input";
-import { login } from "../api";
 import { Switch } from "@headlessui/react";
+import { login } from "../api/auth";
 
 interface Props {}
 const Login: React.FC<Props> = (props) => {

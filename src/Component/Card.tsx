@@ -1,5 +1,6 @@
 import React from "react";
-import { State, User } from "../api";
+import { State } from "../model/State";
+import { User } from "../model/User";
 declare module "react" {
   interface DOMAttributes<T> {
     onError?: ReactEventHandler<T>;
@@ -21,7 +22,7 @@ const Card: React.FC<Props> = ({
   group_image_url,
 }) => {
   return (
-    <div className="ml-5 mr-3 sm:ml-7 justify-center w-96 mb-4">
+    <div className="ml-5 mr-3 sm:ml-7 justify-center w-96 mb-4" key={index} >
       <div
         className={
           "flex flex-row space-y-2 items-center justify-center h-32 py-4 " +
@@ -50,7 +51,7 @@ const Card: React.FC<Props> = ({
           </p>
           <p className="w-full pb-1 text-md tracking-wide leading-tight pr-4 ">
             {description}
-         </p>
+          </p>
         </div>
       </div>
     </div>

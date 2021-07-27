@@ -1,7 +1,7 @@
 import { State } from "./State";
 import { User } from "./User";
 
-export interface Group {
+export interface Group{
   id: number;
   name: string;
   is_private: boolean;

@@ -8,7 +8,7 @@ import deFlag from "../img/Flags/deFlag.png";
 import frFlag from "../img/Flags/frFlag.png";
 import jpFlag from "../img/Flags/jpFlag.png";
 import { FiMail } from "react-icons/fi";
-import { logout } from "../api";
+import { logout } from "../api/auth";
 interface Props {}
 
 const TopNav: React.FC<Props> = (props) => {
@@ -87,9 +87,7 @@ const TopNav: React.FC<Props> = (props) => {
                   </div>
                 </Menu.Item>
                 <Menu.Item>
-                  <div
-                    className="flex px-4 py-1.5 hover:text-blue-500"
-                  >
+                  <div className="flex px-4 py-1.5 hover:text-blue-500">
                     <img
                       src={frFlag}
                       className="w-5 h-5 mr-4"
@@ -112,9 +110,7 @@ const TopNav: React.FC<Props> = (props) => {
                   </a>
                 </Menu.Item>
                 <Menu.Item>
-                  <div
-                    className="flex px-4 py-1.5 hover:text-blue-500"
-                  >
+                  <div className="flex px-4 py-1.5 hover:text-blue-500">
                     <img
                       src={deFlag}
                       className="w-5 h-5 mr-4"
@@ -164,26 +160,20 @@ const TopNav: React.FC<Props> = (props) => {
                 ></div>
 
                 <Menu.Item>
-                  <div
-                    className="flex px-4 py-2 hover:text-blue-500"
-                  >
+                  <div className="flex px-4 py-2 hover:text-blue-500">
                     <AiOutlineUser className="mr-4 h-6 w-6" />
                     <p>Profile</p>
                   </div>
                 </Menu.Item>
                 <Menu.Item>
-                  <div
-                    className="flex px-4 py-1.5 hover:text-blue-500"
-                  >
+                  <div className="flex px-4 py-1.5 hover:text-blue-500">
                     <AiOutlineInbox className="mr-4 h-6 w-6" />
 
                     <p>Inbox</p>
                   </div>
                 </Menu.Item>
                 <Menu.Item>
-                  <div
-                    className="flex px-4 py-1.5 hover:text-blue-500"
-                  >
+                  <div className="flex px-4 py-1.5 hover:text-blue-500">
                     <VscLock className="mr-4 h-6 w-6" />
 
                     <p>Lock Screen</p>

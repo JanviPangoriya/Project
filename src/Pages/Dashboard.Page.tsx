@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { memo } from "react";
 import { FaSearch } from "react-icons/fa";
-import { fetchGroups } from "../api";
+import { fetchGroups } from "../api/group";
+
 import Card from "../Component/Card";
 
 interface Props {}
@@ -22,7 +23,6 @@ const Dashboard: React.FC<Props> = (props) => {
   }, [query, offset]);
   const change = (e: any) => {
     setQuery(e.currentTarget.value);
-
   };
   return (
     <>
@@ -35,9 +35,7 @@ const Dashboard: React.FC<Props> = (props) => {
             placeholder="Search"
             onChange={change}
           />
-          <FaSearch
-            className=" absolute right-5 top-4 w-5 h-5 text-gray-300 "
-          />
+          <FaSearch className=" absolute right-5 top-4 w-5 h-5 text-gray-300 " />
         </label>
 
         {group &&
@@ -48,7 +46,9 @@ const Dashboard: React.FC<Props> = (props) => {
                   key={index}
                   index={index}
                   group_image_url={
-                    g.group_image_url === null ? "https://designreset.com/cork/ltr/demo4/assets/img/profile-12.jpeg" : g.group_image_url
+                    g.group_image_url === null
+                      ? "https://designreset.com/cork/ltr/demo4/assets/img/profile-12.jpeg"
+                      : g.group_image_url
                   }
                   description={g.description}
                   name={g.name}

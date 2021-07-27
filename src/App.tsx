@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
-import { LS_LOGIN_TOKEN } from "./api";
+import { LS_LOGIN_TOKEN } from "./api/base";
 import AppContainerPage from "./Pages/AppContainer.Page";
 import AuthPage from "./Pages/Auth.Page";
 import NotFound from "./Pages/NotFound";
