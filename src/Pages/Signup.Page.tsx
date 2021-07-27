@@ -37,7 +37,7 @@ const Signup: React.FC<Props> = (props) => {
   return (
     <>
       <div className="lg:w-1/2">
-        <div className="mx-0 md:mx-20 text-gray-400">
+        <div className="mx-10 md:mx-20 text-gray-400">
           <div className="flex flex-col justify-center mt-5 py-3 px-12 ">
             <h1 className="text-4xl leading-snug mb-2 tracking-wide text-gray-600">
               Get started with a <br />
@@ -141,7 +141,7 @@ const Signup: React.FC<Props> = (props) => {
               {myform.isSubmitting && (
                 <FaSpinner className="animate-spin mx-auto mt-2"></FaSpinner>
               )}
-              <div className="mt-16 text-justify text-gray-600">
+              <div className="mt-12 text-justify text-gray-600">
                 © 2020 All Rights Reserved.{" "}
                 <span className="text-blue-500 font-bold text-md">
                   Devslane
