@@ -1,6 +1,7 @@
 import React, { memo } from "react";
 import { Route, Switch } from "react-router-dom";
 import AuthHero from "../Component/AuthHero";
+import ForgotPassword from "./ForgotPassword.page";
 import LoginPage from "./Login.Page";
 import SignupPage from "./Signup.Page";
 
@@ -15,6 +16,9 @@ const Auth: React.FC<Props> = (props) => {
         </Route>
         <Route path="/sign" exact>
           <SignupPage />
+        </Route>
+        <Route path="/forgot" exact>
+          <ForgotPassword />
         </Route>
       </Switch>
 

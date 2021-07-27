@@ -19,7 +19,7 @@ const App: React.FC<Props> = (props) => {
             <Redirect to="/login"></Redirect>
           )}
         </Route>
-        <Route path={["/login", "/sign"]} exact>
+        <Route path={["/login", "/sign","/forgot"]} exact>
           <AuthPage />
         </Route>
         <Route
