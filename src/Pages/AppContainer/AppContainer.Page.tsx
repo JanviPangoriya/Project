@@ -1,20 +1,23 @@
 import React from "react";
 import { memo } from "react";
 import { Route, Switch } from "react-router-dom";
-import LeftSideBar from "../Component/LeftSideBar";
-import TopNav from "../Component/TopNav";
+import LeftSideBar from "../../Component/LeftSideBar";
+import TopNav from "../../Component/TopNav";
+import { User } from "../../model/User";
 import DashboardPage from "./Dashboard.Page";
 import LectureRecording from "./LectureRecording";
 import RecordingPage from "./Recording.Page";
 
-interface Props {}
+interface Props {
+  user: User;
+}
 
-const AppContainer: React.FC<Props> = (props) => {
+const AppContainer: React.FC<Props> = ({user}) => {
   return (
     <div>
       <TopNav />
       <div className="flex flex-row">
-        <LeftSideBar />
+        <LeftSideBar user={user} />
         <Switch>
           <Route path="/dashboard" exact>
             <DashboardPage />

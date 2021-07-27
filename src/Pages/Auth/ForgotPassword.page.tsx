@@ -1,7 +1,7 @@
 import { useFormik } from "formik";
 import React from "react";
 import * as yup from "yup";
-import Input from "../Component/Input/Input";
+import Input from "../../Component/Input/Input";
 import { SiMailDotRu } from "react-icons/si";
 
 interface Props {}

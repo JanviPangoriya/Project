@@ -1,42 +1,68 @@
-import React, { memo } from "react";
+import React, { lazy, memo, Suspense, useEffect, useState } from "react";
+import { FaSpinner } from "react-icons/fa";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import { me } from "./api/auth";
 import { LS_LOGIN_TOKEN } from "./api/base";
-import AppContainerPage from "./Pages/AppContainer.Page";
-import AuthPage from "./Pages/Auth.Page";
+import { User } from "./model/User";
+import AppContainerPageLazy from "./Pages/AppContainer/AppContainer.lazy";
+import AuthPageLazy from "./Pages/Auth/AuthPage.lazy";
 import NotFound from "./Pages/NotFound";
 
 interface Props {}
 
 const App: React.FC<Props> = (props) => {
+  const [user, setUser] = useState<User>();
   const token = localStorage.getItem(LS_LOGIN_TOKEN);
+
+  useEffect(() => {
+    if (!token) return;
+
+    me().then((u) => setUser(u));
+  }, []);
+
+  if (!user && token) {
+    return <div>Loading...</div>;
+  }
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route path="/" exact>
-          {token ? (
-            <Redirect to="/dashboard"></Redirect>
-          ) : (
-            <Redirect to="/login"></Redirect>
-          )}
-        </Route>
-        <Route path={["/login", "/sign","/forgot"]} exact>
-          <AuthPage />
-        </Route>
-        <Route
-          path={[
-            "/dashboard",
-            "/recordings",
-            "/batch/:batchNumber/lecture/:lectureNumber",
-          ]}
-          exact
-        >
-          <AppContainerPage />
-        </Route>
-        <Route>
-          <NotFound />
-        </Route>
-      </Switch>
-    </BrowserRouter>
+    <Suspense
+      fallback={<FaSpinner className="animate-spin mx-auto mt-2"></FaSpinner>}
+    >
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" exact>
+            {user ? (
+              <Redirect to="/dashboard"></Redirect>
+            ) : (
+              <Redirect to="/login"></Redirect>
+            )}
+          </Route>
+          <Route path={["/login", "/sign", "/forgot"]} exact>
+            {user ? (
+              <Redirect to="/dashboard"></Redirect>
+            ) : (
+              <AuthPageLazy onLogin={setUser} />
+            )}
+          </Route>
+          <Route
+            path={[
+              "/dashboard",
+              "/recordings",
+              "/batch/:batchNumber/lecture/:lectureNumber",
+            ]}
+            exact
+          >
+            {user ? (
+              <AppContainerPageLazy user={user!} />
+            ) : (
+              <Redirect to="/login"></Redirect>
+            )}
+          </Route>
+          <Route>
+            <NotFound />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    </Suspense>
   );
 };
 

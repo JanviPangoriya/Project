@@ -1,6 +1,5 @@
 import axios from "axios";
-import { State } from "../model/State";
-import { User } from "../model/User";
+import { Group } from "../model/Group";
 import { BASE_URL } from "./base";
 
 interface GroupRequest {
@@ -10,13 +9,7 @@ interface GroupRequest {
   status: "all-groups" | "favourites" | "archieved";
 }
 interface GroupResponse {
-  data: {
-    name: string;
-    creator: User;
-    description: string;
-    group_image_url: string;
-    state: State;
-  };
+  data: Group[];
 }
 
 export const fetchGroups = (data: GroupRequest) => {

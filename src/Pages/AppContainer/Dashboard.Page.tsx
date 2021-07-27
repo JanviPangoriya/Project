@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { memo } from "react";
 import { FaSearch } from "react-icons/fa";
-import { fetchGroups } from "../api/group";
+import { fetchGroups } from "../../api/group";
 
-import Card from "../Component/Card";
+import Card from "../../Component/Card";
 
 interface Props {}
 
