@@ -1,4 +1,4 @@
-/*.css
+/../*.css
   cache-control: public, s-max-age=604800
-/*.js
+/../*.js
   cache-control: public, s-max-age=604800
