@@ -1,6 +1,5 @@
 import React from "react";
 import { memo } from "react";
-import { logout } from "../api/auth";
 
 interface Props {}
 

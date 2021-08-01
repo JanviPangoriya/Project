@@ -1,8 +1,7 @@
 import React from "react";
 import { memo } from "react";
 import { Route, Switch } from "react-router-dom";
-// import LeftSideBar from "../../Component/LeftSideBar";
-import Sidemenu from "../../Component/Sidemenu/Sidemenu";
+import LeftSideBar from "../../Component/LeftSideBar";
 import SubHeader from "../../Component/SubHeader";
 import TopNav from "../../Component/TopNav";
 import DashboardPage from "./Dashboard.Page";
@@ -18,7 +17,7 @@ const AppContainer: React.FC<Props> = () => {
       <TopNav />
       <SubHeader />
       <div className="flex flex-row bg-gray-300 pt-10 ">
-        <Sidemenu />
+        <LeftSideBar />
         <Switch>
           <Route path="/dashboard" exact>
             <DashboardPage />

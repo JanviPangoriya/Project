@@ -1,13 +1,11 @@
-import { Menu, Transition } from "@headlessui/react";
-import React, { Fragment, useContext } from "react";
+import { Menu } from "@headlessui/react";
+import React from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
-import AppContext from "../App.context";
 import { IoIosArrowDown } from "react-icons/io";
 interface Props {}
 
 const SubHeader: React.FC<Props> = (props) => {
-  const { user } = useContext(AppContext);
   return (
     <div className="fixed top-14 z-20 w-full bg-white h-14">
       <div className=" flex flex-row justify-between items-center px-3">
