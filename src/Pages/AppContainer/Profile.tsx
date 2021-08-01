@@ -1,12 +1,14 @@
 import { useFormik } from "formik";
 import React, { useContext } from "react";
-import AppContext from "../../App.context";
+import { useSelector } from "react-redux";
 import * as yup from "yup";
 import Input from "../../Component/Input/Input";
+import { User } from "../../model/User";
+import { AppState } from "../../store";
 interface Props {}
 
 const Profile: React.FC<Props> = (props) => {
-  const { user } = useContext(AppContext);
+   const user = useSelector<AppState, User | undefined>((state) => state.me);
   const myform = useFormik({
     initialValues: {
       first_name: "",

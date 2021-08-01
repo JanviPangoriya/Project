@@ -9,12 +9,14 @@ import frFlag from "../img/Flags/frFlag.png";
 import jpFlag from "../img/Flags/jpFlag.png";
 import { FiMail } from "react-icons/fi";
 import { logout } from "../api/auth";
-import AppContext from "../App.context";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { AppState } from "../store";
+import { User } from "../model/User";
 interface Props {}
 
 const TopNav: React.FC<Props> = (props) => {
-  const { user } = useContext(AppContext);
+  const user = useSelector<AppState, User | undefined>((state) => state.me);
   const [show, setShow] = useState(false);
   const showInput = () => {
     setShow(true);

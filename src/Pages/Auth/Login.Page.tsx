@@ -1,7 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, {  useState } from "react";
 import { memo } from "react";
 import { Link, useHistory } from "react-router-dom";
-
 import { FaUserCircle, FaSpinner } from "react-icons/fa";
 import { RiLockPasswordLine } from "react-icons/ri";
 import * as yup from "yup";
@@ -9,13 +8,13 @@ import { useFormik } from "formik";
 import Input from "../../Component/Input/Input";
 import { Switch } from "@headlessui/react";
 import { login } from "../../api/auth";
-import AppContext from "../../App.context";
+import { useDispatch } from "react-redux";
 
 interface Props {
 }
 const Login: React.FC<Props> = (props) => {
-  const { setUser } = useContext(AppContext);
   const [enabled, setEnabled] = useState(false);
+   const dispatch = useDispatch();
   const history = useHistory();
   const myform = useFormik({
     initialValues: {
@@ -30,7 +29,7 @@ const Login: React.FC<Props> = (props) => {
     }),
     onSubmit: (data) => {
       login(data).then((u) => {
-        setUser(u);
+        dispatch({ type: "me/login", payload: u });
         history.push("/dashboard");
       });
     },

@@ -1,21 +1,26 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { memo } from "react";
 import { FaSearch } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchGroups } from "../../api/group";
-import AppContext from "../../App.context";
 import Card from "../../Component/Card";
+import { Group } from "../../model/Group";
+import { User } from "../../model/User";
+import { AppState } from "../../store";
 
 interface Props {}
 const Dashboard: React.FC<Props> = () => {
-  const {user} = useContext(AppContext);
+  const dispatch = useDispatch();
+  const user = useSelector<AppState, User | undefined>((state) => state.me);
   const [query, setQuery] = useState("");
-  const [group, setGroup] = useState<any>([]);
+  const group = useSelector<AppState, Group[] | undefined>((state) => {
+    return state.groups;
+  });
   const [offset, setOffset] = useState(0);
   useEffect(() => {
     fetchGroups({ status: "all-groups", query: query, offset: offset })
       .then((response) => {
-        console.log(response);
-        setGroup(response);
+         dispatch({ type: "groups/fetch", payload: response });
       })
       .catch((error) => {
         console.log(error);
