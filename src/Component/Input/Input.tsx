@@ -7,6 +7,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   placeholder: string;
   id: string;
   children?: React.ReactElement;
+  className?: string;
 }
 
 const Input: React.FC<Props> = ({
@@ -15,6 +16,7 @@ const Input: React.FC<Props> = ({
   id,
   children,
   placeholder,
+  className,
   ...rest
 }) => {
   return (
@@ -30,12 +32,14 @@ const Input: React.FC<Props> = ({
         {...rest}
         required
         className={
-          "relative appearance-none rounded-none block p-10 w-full h-12 pl-10 py-5 border-b border-gray-300 placeholder-gray-300 text-gray-900 focus:outline-none focus:ring-indigo-500  focus:border-indigo-500 focus:z-10 sm:text-sm "
+          "relative block p-10 w-96 h-12 pl-5 py-5  border-gray-300 placeholder-gray-300 text-gray-900"+
+          className +" focus:outline-none focus:ring-indigo-500  focus:border-indigo-500 focus:z-10 sm:text-sm " +
+          className 
         }
         placeholder={placeholder}
       />
       {touched && (
-        <div className="text-red-600 font-semibold ml-10 mt-1">{error}</div>
+        <div className="text-red-600 font-semibold ml-5 my-1">{error}</div>
       )}
     </div>
   );

@@ -5,4 +5,5 @@ export interface User {
   last_name: string;
   roles: "staff" | "admin";
   profile_pic_url: string;
+  title: string;
 }

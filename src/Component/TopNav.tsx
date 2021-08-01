@@ -1,5 +1,5 @@
 import { Menu, Transition } from "@headlessui/react";
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useContext, useState } from "react";
 import { AiOutlineInbox, AiOutlineSearch, AiOutlineUser } from "react-icons/ai";
 import { FaRegBell, FaSearch, FaSignOutAlt } from "react-icons/fa";
 import { VscLock } from "react-icons/vsc";
@@ -9,9 +9,12 @@ import frFlag from "../img/Flags/frFlag.png";
 import jpFlag from "../img/Flags/jpFlag.png";
 import { FiMail } from "react-icons/fi";
 import { logout } from "../api/auth";
+import AppContext from "../App.context";
+import { Link } from "react-router-dom";
 interface Props {}
 
 const TopNav: React.FC<Props> = (props) => {
+  const { user } = useContext(AppContext);
   const [show, setShow] = useState(false);
   const showInput = () => {
     setShow(true);
@@ -37,7 +40,7 @@ const TopNav: React.FC<Props> = (props) => {
             <FaSearch className=" absolute lg:right-12 top-5 w-5 h-5 text-gray-300 left-5 " />
             <label className="flex flex-row justify-between items-center">
               <input
-                id="input"
+                id="input2"
                 type="text"
                 className="max-w-screen bg-gray-800 justify-center w-full border-2 border-none placeholder-gray-200 mt-3 text-white h-9 px-16 focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50 "
                 placeholder="Search ..."
@@ -135,9 +138,9 @@ const TopNav: React.FC<Props> = (props) => {
           <Menu>
             <Menu.Button>
               <img
-                src="https://designreset.com/cork/ltr/demo4/assets/img/profile-16.jpeg"
+                src={user!.profile_pic_url}
                 className="w-8 h-8 ml-4 rounded-md "
-                alt="Canadian Flag"
+                alt={user!.middle_name}
               />
             </Menu.Button>
             <Transition
@@ -160,20 +163,22 @@ const TopNav: React.FC<Props> = (props) => {
                 ></div>
 
                 <Menu.Item>
-                  <div className="flex px-4 py-2 hover:text-blue-500">
-                    <AiOutlineUser className="mr-4 h-6 w-6" />
-                    <p>Profile</p>
-                  </div>
+                  <Link to="/profile">
+                    <div className="flex px-4 py-2 hover:text-blue-500 cursor-pointer">
+                      <AiOutlineUser className="mr-4 h-6 w-6" />
+                      Profile
+                    </div>
+                  </Link>
                 </Menu.Item>
                 <Menu.Item>
-                  <div className="flex px-4 py-1.5 hover:text-blue-500">
+                  <div className="flex px-4 py-1.5 hover:text-blue-500 cursor-pointer">
                     <AiOutlineInbox className="mr-4 h-6 w-6" />
 
                     <p>Inbox</p>
                   </div>
                 </Menu.Item>
                 <Menu.Item>
-                  <div className="flex px-4 py-1.5 hover:text-blue-500">
+                  <div className="flex px-4 py-1.5 hover:text-blue-500 cursor-pointer">
                     <VscLock className="mr-4 h-6 w-6" />
 
                     <p>Lock Screen</p>
@@ -181,7 +186,7 @@ const TopNav: React.FC<Props> = (props) => {
                 </Menu.Item>
                 <Menu.Item>
                   <div
-                    className="flex px-4 py-1.5 hover:text-blue-500"
+                    className="flex px-4 py-1.5 hover:text-blue-500 cursor-pointer"
                     onClick={() => {
                       logout();
                       window.location.href = "/login";
@@ -200,7 +205,7 @@ const TopNav: React.FC<Props> = (props) => {
         <FaSearch className=" absolute lg:right-12 top-5 w-5 h-5 text-gray-300 left-5 " />
         <label className="flex flex-row justify-between items-center">
           <input
-            id="input"
+            id="input1"
             type="text"
             className="max-w-screen border-0 border-none  bg-gray-900 justify-center w-full placeholder-gray-200 text-white h-14 px-16"
             placeholder="Search ..."

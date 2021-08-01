@@ -14,6 +14,11 @@ interface Props {
   state: State;
   index: number;
 }
+const handleError = (e: any) => {
+  e.target.onError = null;
+  e.target.src =
+    "https://www.imgacademy.com/themes/custom/imgacademy/images/helpbox-contact.jpg";
+};
 const Card: React.FC<Props> = ({
   name,
   index,
@@ -22,7 +27,7 @@ const Card: React.FC<Props> = ({
   group_image_url,
 }) => {
   return (
-    <div className="ml-5 mr-3 sm:ml-7 justify-center w-96 mb-4" key={index} >
+    <div className="ml-5 mr-3 sm:ml-7 justify-center w-96 mb-4" key={index}>
       <div
         className={
           "flex flex-row space-y-2 items-center justify-center h-32 py-4 " +
@@ -33,17 +38,12 @@ const Card: React.FC<Props> = ({
         }
       >
         <div className="">
-          <object
-            data={group_image_url}
-            type="image/png"
-            className="w-24 h-24 rounded-full ml-3 sm:ml-1"
-          >
-            <img
-              src="https://designreset.com/cork/ltr/demo4/assets/img/profile-12.jpeg"
-              className="w-24 h-24 rounded-full "
-              alt={name}
-            />
-          </object>
+          <img
+            src={group_image_url}
+            className="w-24 h-24 rounded-full ml-3 sm:ml-1 "
+            onError={handleError}
+            alt={name}
+          />
         </div>
         <div className="w-2/3">
           <p className="w-full text-xl  mb-1 font-semibold uppercase ">

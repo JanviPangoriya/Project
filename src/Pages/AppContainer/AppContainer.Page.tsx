@@ -1,29 +1,33 @@
 import React from "react";
 import { memo } from "react";
 import { Route, Switch } from "react-router-dom";
-import LeftSideBar from "../../Component/LeftSideBar";
+// import LeftSideBar from "../../Component/LeftSideBar";
+import Sidemenu from "../../Component/Sidemenu/Sidemenu";
+import SubHeader from "../../Component/SubHeader";
 import TopNav from "../../Component/TopNav";
-import { User } from "../../model/User";
 import DashboardPage from "./Dashboard.Page";
 import LectureRecording from "./LectureRecording";
+import Profile from "./Profile";
 import RecordingPage from "./Recording.Page";
 
-interface Props {
-  user: User;
-}
+interface Props {}
 
-const AppContainer: React.FC<Props> = ({user}) => {
+const AppContainer: React.FC<Props> = () => {
   return (
     <div>
       <TopNav />
-      <div className="flex flex-row">
-        <LeftSideBar />
+      <SubHeader />
+      <div className="flex flex-row bg-gray-300 pt-10 ">
+        <Sidemenu />
         <Switch>
           <Route path="/dashboard" exact>
-            <DashboardPage user={user} />
+            <DashboardPage />
           </Route>
           <Route path="/recordings" exact>
             <RecordingPage />
+          </Route>
+          <Route path="/profile" exact>
+            <Profile />
           </Route>
           <Route path="/batch/:batchNumber/lecture/:lectureNumber" exact>
             <LectureRecording />

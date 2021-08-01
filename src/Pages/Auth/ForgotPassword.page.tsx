@@ -34,8 +34,9 @@ const ForgotPassword: React.FC<Props> = (props) => {
               <Input
                 touched={myform.touched.email}
                 error={myform.errors.email}
+                className="pl-10 border-b"
                 placeholder="Email address"
-                id="email-address"
+                id="email-addresss"
                 type="email"
                 autoComplete="email"
                 required

@@ -10,21 +10,3 @@
 //        })
 //     return response;
 //   });
-import React from 'react';
-
-interface Props{
-
-}
-
-const SomeExtraCode:React.FC<Props>=(props) => {
-    return(
-        <>
-        </>
-    );
-
-}
-
-SomeExtraCode.defaultProps={
-    
-}
-export default SomeExtraCode;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { memo } from "react";
 import { Link, useHistory } from "react-router-dom";
 
@@ -9,12 +9,12 @@ import { useFormik } from "formik";
 import Input from "../../Component/Input/Input";
 import { Switch } from "@headlessui/react";
 import { login } from "../../api/auth";
-import { User } from "../../model/User";
+import AppContext from "../../App.context";
 
 interface Props {
-  onLogin: (user: User) => void;
 }
 const Login: React.FC<Props> = (props) => {
+  const { setUser } = useContext(AppContext);
   const [enabled, setEnabled] = useState(false);
   const history = useHistory();
   const myform = useFormik({
@@ -30,7 +30,7 @@ const Login: React.FC<Props> = (props) => {
     }),
     onSubmit: (data) => {
       login(data).then((u) => {
-        props.onLogin(u);
+        setUser(u);
         history.push("/dashboard");
       });
     },
@@ -58,6 +58,7 @@ const Login: React.FC<Props> = (props) => {
                 touched={myform.touched.email}
                 error={myform.errors.email}
                 placeholder="Email address"
+                className="pl-10 border-b"
                 id="email-address"
                 type="email"
                 autoComplete="email"
@@ -71,6 +72,7 @@ const Login: React.FC<Props> = (props) => {
                 touched={myform.touched.password}
                 error={myform.errors.password}
                 placeholder="Password"
+                className="pl-10 border-b"
                 id="password"
                 type={enabled ? "text" : "password"}
                 autoComplete="current-password"
@@ -104,7 +106,7 @@ const Login: React.FC<Props> = (props) => {
                   disabled={!myform.isValid}
                   type="submit"
                   className={
-                    "w-20 px-3 mt-5 md:mt-0 py-1 rounded-md bg-blue-600 text-white font-semibold shadow-2xl hover:shadow-none "
+                    "w-20 px-3 mt-5 md:mt-0 py-1 rounded-md  bg-blue-600 text-white font-semibold shadow-2xl hover:shadow-none disabled:cursor-not-allowed"
                   }
                 >
                   Log In
