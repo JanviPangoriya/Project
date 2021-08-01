@@ -1,5 +1,5 @@
 import { Menu, Transition } from "@headlessui/react";
-import React, { Fragment, useContext, useState } from "react";
+import React, { Fragment, useState } from "react";
 import { AiOutlineInbox, AiOutlineSearch, AiOutlineUser } from "react-icons/ai";
 import { FaRegBell, FaSearch, FaSignOutAlt } from "react-icons/fa";
 import { VscLock } from "react-icons/vsc";

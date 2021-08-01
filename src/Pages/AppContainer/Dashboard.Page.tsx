@@ -24,7 +24,7 @@ const Dashboard: React.FC<Props> = () => {
       })
       .catch((error) => {
         console.log(error);
-      });
+      });// eslint-disable-next-line 
   }, [query, offset]);
   const change = (e: any) => {
     setQuery(e.currentTarget.value);

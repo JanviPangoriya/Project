@@ -1,10 +1,9 @@
-import React, { memo, Suspense, useEffect, useState } from "react";
+import React, { memo, Suspense, useEffect} from "react";
 import { FaSpinner } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import { me } from "./api/auth";
 import { LS_LOGIN_TOKEN } from "./api/base";
-import AppContext from "./App.context";
 import { User } from "./model/User";
 import AppContainerPageLazy from "./Pages/AppContainer/AppContainer.lazy";
 import AuthPageLazy from "./Pages/Auth/AuthPage.lazy";
