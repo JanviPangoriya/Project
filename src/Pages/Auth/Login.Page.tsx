@@ -9,6 +9,7 @@ import Input from "../../Component/Input/Input";
 import { Switch } from "@headlessui/react";
 import { login } from "../../api/auth";
 import { useDispatch } from "react-redux";
+import { ME_LOGIN } from "../../constant";
 
 interface Props {
 }
@@ -29,7 +30,7 @@ const Login: React.FC<Props> = (props) => {
     }),
     onSubmit: (data) => {
       login(data).then((u) => {
-        dispatch({ type: "me/login", payload: u });
+        dispatch({ type:ME_LOGIN, payload: u });
         history.push("/dashboard");
       });
     },

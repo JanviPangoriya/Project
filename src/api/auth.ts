@@ -1,6 +1,7 @@
 import axios from "axios";
+import { LS_AUTH_TOKEN } from "../constant";
 import { User } from "../model/User";
-import {BASE_URL, LS_LOGIN_TOKEN } from "./base";
+import {BASE_URL} from "./base";
 
 interface LoginRequest {
   email: string;
@@ -21,13 +22,13 @@ export const login = (data: LoginRequest) => {
   console.log(data);
   return axios.post<LoginResponse>(url, data).then((response) => {
     console.log(response);
-    localStorage.setItem(LS_LOGIN_TOKEN, response.data.token);
+    localStorage.setItem(LS_AUTH_TOKEN, response.data.token);
     return response.data.user;
   });
 };
 
 export const logout = () => {
-  localStorage.removeItem(LS_LOGIN_TOKEN);
+  localStorage.removeItem(LS_AUTH_TOKEN);
 };
 export const me = () => {
   const url = BASE_URL + "/me";
