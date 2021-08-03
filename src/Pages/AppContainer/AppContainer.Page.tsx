@@ -1,7 +1,7 @@
 import React from "react";
 import { memo } from "react";
 import { Route, Switch } from "react-router-dom";
-import LeftSideBar from "../../Component/LeftSideBar";
+import LeftSideBar from "../../Component/SideBar/LeftSideBar";
 import SubHeader from "../../Component/SubHeader";
 import TopNav from "../../Component/TopNav";
 import DashboardPage from "./Dashboard.Page";

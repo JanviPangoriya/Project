@@ -3,15 +3,31 @@ import React from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
+import { useDispatch } from "react-redux";
+import { useAppSelector } from "../store";
+import { UI_SIDEBAR } from "../constant";
 interface Props {}
 
 const SubHeader: React.FC<Props> = (props) => {
+  const dispatch = useDispatch();
+  const sidebarStatus = useAppSelector((state) => state.isSideBarOpen);
+
+  const toggleSideBar = () => {
+    dispatch({ type: UI_SIDEBAR, payload: !sidebarStatus });
+    if (window.innerWidth < 420) {
+      dispatch({ type: UI_SIDEBAR, payload: false });
+    }
+  };
+
   return (
     <div className="fixed top-14 z-20 w-full bg-white h-14">
       <div className=" flex flex-row justify-between items-center px-3">
         <div className="flex flex-row items-center ">
           <div>
-            <GiHamburgerMenu className="w-7 h-7 text-gray-700 mt-4 mr-5" />
+            <GiHamburgerMenu
+              className="w-7 h-7 text-gray-700 mt-4 mr-5"
+              onClick={toggleSideBar}
+            />
           </div>
           <Link to="/dashboard">
             <div className="pt-4 text-gray-700 text-lg font-semibold ">
