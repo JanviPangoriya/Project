@@ -32,7 +32,7 @@ const LeftSideBar: React.FC<Props> = (props) => {
     >
       <div
         className={
-          " w-60 bg-gray-300 mt-16 top-12 z-30 md:z-0 overflow-y-auto h-screen fixed scrollbar scrollbar-width-x-2"
+          " w-60 bg-gray-300 mt-16 top-12 z-30 md:z-0 overflow-y-auto h-screen pb-32 fixed scrollbar scrollbar-width-x-2"
         }
       >
         <SidebarElement
@@ -123,22 +123,7 @@ const LeftSideBar: React.FC<Props> = (props) => {
           icon={<FiTarget className="w-5 h-5" />}
           dropdown={false}
         />
-        <SidebarElement
-          text={"Widgets"}
-          icon={<FiAirplay className="w-5 h-5" />}
-          dropdown={false}
-        />
-
-        <SidebarElement
-          text={"Maps"}
-          icon={<FiMap className="w-5 h-5" />}
-          dropdown={true}
-        />
-        <SidebarElement
-          text={"Charts"}
-          icon={<FiPieChart className="w-5 h-5" />}
-          dropdown={true}
-        />
+        
       </div>
     </Transition>
   );
