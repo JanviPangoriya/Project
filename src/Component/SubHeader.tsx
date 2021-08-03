@@ -25,7 +25,7 @@ const SubHeader: React.FC<Props> = (props) => {
         <div className="flex flex-row items-center ">
           <div>
             <GiHamburgerMenu
-              className="w-7 h-7 text-gray-700 mt-4 mr-5"
+              className="w-7 h-7 text-gray-700 mt-4 mr-5 cursor-pointer "
               onClick={toggleSideBar}
             />
           </div>

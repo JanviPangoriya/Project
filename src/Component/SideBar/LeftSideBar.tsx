@@ -123,7 +123,22 @@ const LeftSideBar: React.FC<Props> = (props) => {
           icon={<FiTarget className="w-5 h-5" />}
           dropdown={false}
         />
-        
+        <SidebarElement
+          text={"Widgets"}
+          icon={<FiAirplay className="w-5 h-5" />}
+          dropdown={false}
+        />
+
+        <SidebarElement
+          text={"Maps"}
+          icon={<FiMap className="w-5 h-5" />}
+          dropdown={true}
+        />
+        <SidebarElement
+          text={"Charts"}
+          icon={<FiPieChart className="w-5 h-5" />}
+          dropdown={true}
+        />
       </div>
     </Transition>
   );
