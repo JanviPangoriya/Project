@@ -1,4 +1,4 @@
-import React, { memo, Suspense, useEffect} from "react";
+import React, { memo, Suspense, useEffect } from "react";
 import { FaSpinner } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";

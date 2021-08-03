@@ -1,37 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { memo } from "react";
 import { FaSearch } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { fetchGroups } from "../../api/group";
 import Card from "../../Component/Card";
-import { Group } from "../../model/Group";
-import { User } from "../../model/User";
-import { AppState } from "../../store";
+import { useAppSelector } from "../../store";
 
 interface Props {}
 const Dashboard: React.FC<Props> = () => {
   const dispatch = useDispatch();
-  const user = useSelector<AppState, User | undefined>((state) => state.me);
-  const [query, setQuery] = useState("");
-  const group = useSelector<AppState, Group[] | undefined>((state) => {
-    return state.groups;
+  const user = useAppSelector((state) => state.me);
+
+  const query = useAppSelector((state) => state.groupQuery);
+
+  const groups = useAppSelector((state) => {
+    const groupIds = state.groupQueryMap[state.groupQuery] || [];
+    const group = groupIds.map((id) => state.groups[id]);
+    return group;
   });
-  const [offset, setOffset] = useState(0);
   useEffect(() => {
-    fetchGroups({ status: "all-groups", query: query, offset: offset })
-      .then((response) => {
-         dispatch({ type: "groups/fetch", payload: response });
+    fetchGroups({ status: "all-groups", query }).then((groups) =>
+      dispatch({
+        type: "groups/fetch",
+        payload: { groups: groups, query: query },
       })
-      .catch((error) => {
-        console.log(error);
-      });// eslint-disable-next-line 
-  }, [query, offset]);
-  const change = (e: any) => {
-    setQuery(e.currentTarget.value);
-  };
+    ); // eslint-disable-next-line
+  }, [query]);
+
   return (
     <>
-    <div className="relative mt-24 md:ml-60 ">
+      <div className="relative mt-24 md:ml-60 ">
         <div className="text-5xl ml-10 bg-gradient-to-tl from-red-600 to-gray-500 font-bold mb-2 bg-clip-text text-transparent">
           Welcome {user!.first_name} !!!
         </div>
@@ -40,13 +38,15 @@ const Dashboard: React.FC<Props> = () => {
             type="text"
             className="max-w-screen ml-5 sm:ml-8  justify-center mb-4 border-4 w-96 h-12 px-5 placeholder-gray-600 focus:placeholder-gray-300 "
             placeholder="Search . . . "
-            onChange={change}
+            onChange={(e) => {
+              dispatch({ type: "groups/query", payload: e.target.value });
+            }}
           />
           <FaSearch className=" absolute right-5 top-16 mt-2 w-5 h-5 text-gray-300 " />
         </label>
 
-        {group &&
-          group.map((g: any, index: number) => {
+        {groups &&
+          groups.map((g: any, index: number) => {
             return (
               <>
                 <Card
@@ -65,36 +65,6 @@ const Dashboard: React.FC<Props> = () => {
               </>
             );
           })}
-        <div className="flex flex-row justify-between items-center mx-4">
-          <button
-            className={
-              "px-5 my-2 uppercase rounded-full h-12  " +
-              (offset < 20
-                ? "bg-gray-200 text-black "
-                : "bg-red-500 text-white ")
-            }
-            disabled={offset < 20 ? true : false}
-            onClick={() => {
-              setOffset(offset - 20);
-            }}
-          >
-            Previous
-          </button>
-          <button
-            className={
-              "px-5 my-2 uppercase rounded-full h-12 " +
-              (offset >= 20
-                ? "bg-gray-200 text-black"
-                : "bg-red-500 text-white ")
-            }
-            disabled={offset >= 20 ? true : false}
-            onClick={() => {
-              setOffset(offset + 20);
-            }}
-          >
-            Next
-          </button>
-        </div>
       </div>
     </>
   );
