@@ -9,5 +9,5 @@ module.exports = {
       cursor: ["disabled"],
     },
   },
-  plugins: [],
+  plugins: [require("ps-scrollbar-tailwind")],
 };
