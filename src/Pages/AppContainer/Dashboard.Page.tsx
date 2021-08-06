@@ -3,6 +3,7 @@ import { memo } from "react";
 import { FaSearch } from "react-icons/fa";
 import { fetchGroups } from "../../api/group";
 import Card from "../../Component/Card";
+import { groupQueryCompletedSelector, groupQuerySelector } from "../../selectors/groups.selectors";
 import { useAppSelector } from "../../store";
 import { groupAction } from "../../store/actions/groups.actions";
 
@@ -11,13 +12,9 @@ const Dashboard: React.FC<Props> = () => {
   // const sidebarStatus = useAppSelector((state) => state.isSideBarOpen);
   const user = useAppSelector((state) => state.users.byId[state.auth.id!]);
 
-  const query = useAppSelector((state) => state.groups.query);
+  const query = useAppSelector(groupQuerySelector);
 
-  const groups = useAppSelector((state) => {
-    const groupIds = state.groups.queryMap[state.groups.query] || [];
-    const group = groupIds.map((id) => state.groups.byId[id]);
-    return group;
-  });
+  const groups = useAppSelector(groupQueryCompletedSelector);
   useEffect(() => {
     fetchGroups({ status: "all-groups", query }).then((groups) =>
       groupAction.querCompleted(query, groups)
