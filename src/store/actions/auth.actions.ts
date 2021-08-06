@@ -8,9 +8,9 @@ const meFetchAction = (u: User) => ({ type: ME_FETCH, payload: u });
 const meLoginAction = (u: User) => ({ type: ME_LOGIN, payload: u });
 
 export const authAction = bindActionCreators(
-    {
-        fetch: meFetchAction,
-        login:meLoginAction,
-
-    },store.dispatch
-)
+  {
+    fetch: meFetchAction,
+    login: meLoginAction,
+  },
+  store.dispatch
+);

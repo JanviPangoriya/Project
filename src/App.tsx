@@ -6,15 +6,14 @@ import { LS_AUTH_TOKEN} from "./constant";
 import AppContainerPageLazy from "./Pages/AppContainer/AppContainer.lazy";
 import AuthPageLazy from "./Pages/Auth/AuthPage.lazy";
 import NotFound from "./Pages/NotFound";
+import { meSelector } from "./selectors/auth.selectors";
 import { useAppSelector } from "./store";
 import { authAction} from "./store/actions/auth.actions";
 
 interface Props {}
 
 const App: React.FC<Props> = (props) => {
-  const user = useAppSelector(
-    (state) => state.auth.id && state.users.byId[state.auth.id]
-  );
+  const user = useAppSelector(meSelector);
   const token = localStorage.getItem(LS_AUTH_TOKEN);
   useEffect(() => {
     if (!token) return;
