@@ -1,41 +1,36 @@
 import React, { useEffect } from "react";
 import { memo } from "react";
 import { FaSearch } from "react-icons/fa";
-import { useDispatch } from "react-redux";
 import { fetchGroups } from "../../api/group";
 import Card from "../../Component/Card";
-import { GROUP_FETCH, GROUP_QUERY } from "../../constant";
 import { useAppSelector } from "../../store";
+import { groupAction } from "../../store/actions/groups.actions";
 
 interface Props {}
 const Dashboard: React.FC<Props> = () => {
-  const sidebarStatus = useAppSelector((state) => state.isSideBarOpen);
-  const dispatch = useDispatch();
-  const user = useAppSelector((state) => state.me);
+  // const sidebarStatus = useAppSelector((state) => state.isSideBarOpen);
+  const user = useAppSelector((state) => state.users.byId[state.auth.id!]);
 
-  const query = useAppSelector((state) => state.groupQuery);
+  const query = useAppSelector((state) => state.groups.query);
 
   const groups = useAppSelector((state) => {
-    const groupIds = state.groupQueryMap[state.groupQuery] || [];
-    const group = groupIds.map((id) => state.groups[id]);
+    const groupIds = state.groups.queryMap[state.groups.query] || [];
+    const group = groupIds.map((id) => state.groups.byId[id]);
     return group;
   });
   useEffect(() => {
     fetchGroups({ status: "all-groups", query }).then((groups) =>
-      dispatch({
-        type: GROUP_FETCH,
-        payload: { groups: groups, query: query },
-      })
+      groupAction.querCompleted(query, groups)
     ); // eslint-disable-next-line
   }, [query]);
 
   return (
     <>
-     
       <div
-        className={
-          "relative mt-24 transfom duration-500  ml-5 " + (sidebarStatus ? "md:ml-64 " : "")
-        }
+        className={"relative mt-24 transfom duration-500  ml-5 "}
+        //  +
+        // (sidebarStatus ? "md:ml-64 " : "")
+        // }
       >
         <div className="text-5xl ml-10 bg-gradient-to-tl from-red-600 to-gray-500 font-bold mb-2 bg-clip-text text-transparent">
           Welcome {user!.first_name} !!!
@@ -46,7 +41,7 @@ const Dashboard: React.FC<Props> = () => {
             className="max-w-screen ml-5 sm:ml-8  justify-center mb-4 border-4 w-96 h-12 px-5 placeholder-gray-600 focus:placeholder-gray-300 "
             placeholder="Search . . . "
             onChange={(e) => {
-              dispatch({ type: GROUP_QUERY, payload: e.target.value });
+              groupAction.query(e.target.value);
             }}
           />
           <FaSearch className=" absolute right-5 top-16 mt-2 w-5 h-5 text-gray-300 " />
@@ -72,7 +67,7 @@ const Dashboard: React.FC<Props> = () => {
               </>
             );
           })}
-        </div>
+      </div>
     </>
   );
 };

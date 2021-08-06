@@ -1,25 +1,25 @@
 import React, { memo, Suspense, useEffect } from "react";
 import { FaSpinner } from "react-icons/fa";
-import { useSelector, useDispatch } from "react-redux";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import { me } from "./api/auth";
-import { LS_AUTH_TOKEN, ME_FETCH } from "./constant";
-import { User } from "./model/User";
+import { LS_AUTH_TOKEN} from "./constant";
 import AppContainerPageLazy from "./Pages/AppContainer/AppContainer.lazy";
 import AuthPageLazy from "./Pages/Auth/AuthPage.lazy";
 import NotFound from "./Pages/NotFound";
-import { AppState } from "./store";
+import { useAppSelector } from "./store";
+import { authAction} from "./store/actions/auth.actions";
 
 interface Props {}
 
 const App: React.FC<Props> = (props) => {
-  const user = useSelector<AppState, User | undefined>((state) => state.me);
+  const user = useAppSelector(
+    (state) => state.auth.id && state.users.byId[state.auth.id]
+  );
   const token = localStorage.getItem(LS_AUTH_TOKEN);
-  const dispatch = useDispatch();
   useEffect(() => {
     if (!token) return;
 
-    me().then((u) => dispatch({ type: ME_FETCH, payload: u }));
+    me().then((u) =>authAction.fetch(u));
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!user && token) {

@@ -10,13 +10,11 @@ import jpFlag from "../img/Flags/jpFlag.png";
 import { FiMail } from "react-icons/fi";
 import { logout } from "../api/auth";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { AppState } from "../store";
-import { User } from "../model/User";
+import { useAppSelector } from "../store";
 interface Props {}
 
 const TopNav: React.FC<Props> = (props) => {
-  const user = useSelector<AppState, User | undefined>((state) => state.me);
+  const user = useAppSelector((state) => state.users.byId[state.auth.id!]);
   const [show, setShow] = useState(false);
   const showInput = () => {
     setShow(true);

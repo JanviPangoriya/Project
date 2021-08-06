@@ -4,16 +4,15 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
 import { useDispatch } from "react-redux";
-import { useAppSelector } from "../store";
 import { UI_SIDEBAR } from "../constant";
 interface Props {}
 
 const SubHeader: React.FC<Props> = (props) => {
   const dispatch = useDispatch();
-  const sidebarStatus = useAppSelector((state) => state.isSideBarOpen);
+  // const sidebarStatus = useAppSelector((state) => state.isSideBarOpen);
 
   const toggleSideBar = () => {
-    dispatch({ type: UI_SIDEBAR, payload: !sidebarStatus });
+    // dispatch({ type: UI_SIDEBAR, payload: !sidebarStatus });
     if (window.innerWidth < 420) {
       dispatch({ type: UI_SIDEBAR, payload: false });
     }

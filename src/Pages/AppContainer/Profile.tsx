@@ -8,7 +8,7 @@ import { AppState } from "../../store";
 interface Props {}
 
 const Profile: React.FC<Props> = (props) => {
-   const user = useSelector<AppState, User | undefined>((state) => state.me);
+   const user = useSelector<AppState, User | undefined>((state) => state.users.byId[state.auth.id!]);
   const myform = useFormik({
     initialValues: {
       first_name: "",

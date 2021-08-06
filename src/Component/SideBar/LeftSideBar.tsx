@@ -1,27 +1,20 @@
 import { Transition } from "@headlessui/react";
 import React, { Fragment } from "react";
 import { memo } from "react";
-import {
-  FiCpu,
-  FiTarget,
-  FiAirplay,
-  FiMap,
-  FiPieChart,
-} from "react-icons/fi";
-import { BiCube} from "react-icons/bi";
+import { FiCpu, FiTarget, FiAirplay, FiMap, FiPieChart } from "react-icons/fi";
+import { BiCube } from "react-icons/bi";
 import { GiElectric } from "react-icons/gi";
-import { useAppSelector } from "../../store";
 import SidebarElement from "./SidebarElement";
-import { AiOutlineHome} from "react-icons/ai";
+import { AiOutlineHome } from "react-icons/ai";
 
 interface Props {}
 
 const LeftSideBar: React.FC<Props> = (props) => {
-  const sidebarStatus = useAppSelector((state) => state.isSideBarOpen);
+  // const sidebarStatus = useAppSelector((state) => state.isSideBarOpen);
   return (
     <Transition
       as={Fragment}
-      show={sidebarStatus}
+      // show={sidebarStatus}
       enter="transition ease-in-out duration-500 transform"
       enterFrom="-translate-x-full"
       enterTo="translate-x-0"

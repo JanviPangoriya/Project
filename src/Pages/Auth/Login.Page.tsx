@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { memo } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { FaUserCircle, FaSpinner } from "react-icons/fa";
@@ -8,14 +8,11 @@ import { useFormik } from "formik";
 import Input from "../../Component/Input/Input";
 import { Switch } from "@headlessui/react";
 import { login } from "../../api/auth";
-import { useDispatch } from "react-redux";
-import { ME_LOGIN } from "../../constant";
+import { authAction } from "../../store/actions/auth.actions";
 
-interface Props {
-}
+interface Props {}
 const Login: React.FC<Props> = (props) => {
   const [enabled, setEnabled] = useState(false);
-   const dispatch = useDispatch();
   const history = useHistory();
   const myform = useFormik({
     initialValues: {
@@ -30,7 +27,7 @@ const Login: React.FC<Props> = (props) => {
     }),
     onSubmit: (data) => {
       login(data).then((u) => {
-        dispatch({ type:ME_LOGIN, payload: u });
+        authAction.login(u);
         history.push("/dashboard");
       });
     },
