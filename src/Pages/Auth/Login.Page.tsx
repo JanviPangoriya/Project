@@ -137,7 +137,7 @@ const Login: React.FC<Props> = (props) => {
                 <span className="text-blue-500 font-bold text-md">
                   Devslane
                 </span>{" "}
-                is a comapny which is currently working on web development.{" "}
+                is a company which is currently working on web development.{" "}
                 <span className="text-blue-500 font-bold text-md">
                   Cookie Preferences{" "}
                   <span className="text-gray-700 font-normal">,</span> Privacy

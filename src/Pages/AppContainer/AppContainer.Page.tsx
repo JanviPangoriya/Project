@@ -4,9 +4,9 @@ import { Route, Switch } from "react-router-dom";
 import SubHeader from "../../Component/SubHeader";
 import TopNav from "../../Component/TopNav";
 import DashboardPage from "./Dashboard.Page";
-import LectureRecording from "./LectureRecording";
 import Profile from "./Profile";
-import RecordingPage from "./Recording.Page";
+import Groups from "./Groups.Page";
+import GroupDetail from "./GroupDetail.Page";
 
 interface Props {}
 
@@ -21,14 +21,14 @@ const AppContainer: React.FC<Props> = () => {
           <Route path="/dashboard" exact>
             <DashboardPage />
           </Route>
-          <Route path="/recordings" exact>
-            <RecordingPage />
-          </Route>
           <Route path="/profile" exact>
             <Profile />
           </Route>
-          <Route path="/batch/:batchNumber/lecture/:lectureNumber" exact>
-            <LectureRecording />
+          <Route path="/groups" exact>
+            <Groups />
+          </Route>
+          <Route path="/groups/:groupId" exact>
+            <GroupDetail />
           </Route>
         </Switch>
       </div>
