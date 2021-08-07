@@ -3,6 +3,7 @@ import { memo } from "react";
 import { FaSearch } from "react-icons/fa";
 import { fetchGroups } from "../../api/group";
 import Card from "../../Component/Card";
+import { meSelector } from "../../selectors/auth.selectors";
 import { groupQueryCompletedSelector, groupQuerySelector } from "../../selectors/groups.selectors";
 import { useAppSelector } from "../../store";
 import { groupAction } from "../../store/actions/groups.actions";
@@ -10,7 +11,7 @@ import { groupAction } from "../../store/actions/groups.actions";
 interface Props {}
 const Dashboard: React.FC<Props> = () => {
   // const sidebarStatus = useAppSelector((state) => state.isSideBarOpen);
-  const user = useAppSelector((state) => state.users.byId[state.auth.id!]);
+  const user = useAppSelector(meSelector);
 
   const query = useAppSelector(groupQuerySelector);
 

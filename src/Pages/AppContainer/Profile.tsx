@@ -1,14 +1,13 @@
 import { useFormik } from "formik";
 import React from "react";
-import { useSelector } from "react-redux";
 import * as yup from "yup";
 import Input from "../../Component/Input/Input";
-import { User } from "../../model/User";
-import { AppState } from "../../store";
+import { meSelector } from "../../selectors/auth.selectors";
+import {  useAppSelector } from "../../store";
 interface Props {}
 
 const Profile: React.FC<Props> = (props) => {
-   const user = useSelector<AppState, User | undefined>((state) => state.users.byId[state.auth.id!]);
+   const user = useAppSelector(meSelector);
   const myform = useFormik({
     initialValues: {
       first_name: "",

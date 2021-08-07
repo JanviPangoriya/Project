@@ -11,10 +11,11 @@ import { FiMail } from "react-icons/fi";
 import { logout } from "../api/auth";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../store";
+import { meSelector } from "../selectors/auth.selectors";
 interface Props {}
 
 const TopNav: React.FC<Props> = (props) => {
-  const user = useAppSelector((state) => state.users.byId[state.auth.id!]);
+  const user = useAppSelector(meSelector);
   const [show, setShow] = useState(false);
   const showInput = () => {
     setShow(true);
