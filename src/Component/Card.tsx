@@ -10,7 +10,7 @@ interface Props {
   state: State;
   index: number;
 }
-const handleError = (e: any) => {
+export const handleError = (e: any) => {
   e.target.onError = null;
   e.target.src =
     "https://www.imgacademy.com/themes/custom/imgacademy/images/helpbox-contact.jpg";

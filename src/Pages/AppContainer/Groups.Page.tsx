@@ -27,32 +27,39 @@ const Groups: React.FC<Props> = () => {
   }, [query]);
 
   return (
-      <div
-        className={"relative mt-24 transfom duration-500  ml-5"}
-        //  +
-        // (sidebarStatus ? "md:ml-64 " : "")
-        // }
-      >
-        <div className="text-5xl ml-10 bg-gradient-to-tl from-red-600 to-gray-500 font-bold mb-2 bg-clip-text text-transparent">
-          Welcome {user!.first_name} !!!
-        </div>
-        <label className="flex flex-row justify-between items-center">
-          <input
-            type="text"
-            className="max-w-screen ml-5 sm:ml-8  justify-center mb-4 border-4 w-96 h-12 px-5 placeholder-gray-600 focus:placeholder-gray-300 "
-            placeholder="Search . . . "
-            onChange={(e) => {
-              groupAction.query(e.target.value);
-            }}
-          />
-          <FaSearch className=" absolute right-14 top-16 mt-2 w-5 h-5 text-gray-300 " />
-        </label>
+    <div
+      className={"relative mt-24 transfom duration-500  ml-5"}
+      //  +
+      // (sidebarStatus ? "md:ml-64 " : "")
+      // }
+    >
+      <div className="text-5xl ml-10 bg-gradient-to-tl from-red-600 to-gray-500 font-bold mb-2 bg-clip-text text-transparent">
+        Welcome {user!.first_name} !!!
+      </div>
+      <label className="flex flex-row justify-between items-center">
+        <input
+          type="text"
+          className="max-w-screen ml-5 sm:ml-8  justify-center mb-4 border-4 w-96 h-12 px-5 placeholder-gray-600 focus:placeholder-gray-300 "
+          placeholder="Search . . . "
+          onChange={(e) => {
+            groupAction.query(e.target.value);
+          }}
+        />
+        <FaSearch className=" absolute right-14 top-16 mt-2 w-5 h-5 text-gray-300 " />
+      </label>
 
-        {groups &&
-          groups.map((g: any, index: number) => {
-            return (
-                <>
-                  <Link to={"/groups/" + g.id} className="flex py-2.5 px-3">
+      {groups &&
+        groups.map((g: any, index: number) => {
+          return (
+            <>
+              <Link
+                to={"/groups/" + g.id}
+                className="flex py-2.5 px-3"
+                onClick={(e: any) => {
+                  groupAction.selectGroup(g.id);
+                  groupAction.selectGroupIndex(index);
+                }}
+              >
                 <Card
                   key={index}
                   index={index}
@@ -66,12 +73,11 @@ const Groups: React.FC<Props> = () => {
                   creator={g.creator}
                   state={g.state}
                 />
-                  
-                </Link>
-              </>
-            );
-          })}
-      </div>
+              </Link>
+            </>
+          );
+        })}
+    </div>
   );
 };
 

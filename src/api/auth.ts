@@ -19,9 +19,7 @@ interface MeResponse {
 }
 export const login = (data: LoginRequest) => {
   const url = BASE_URL + "/login";
-  console.log(data);
   return axios.post<LoginResponse>(url, data).then((response) => {
-    console.log(response);
     localStorage.setItem(LS_AUTH_TOKEN, response.data.token);
     return response.data.user;
   });

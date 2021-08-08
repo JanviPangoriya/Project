@@ -1,34 +1,85 @@
-import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import React from "react";
+import { Link} from "react-router-dom";
+import { fetchSpecificGroup } from "../../api/group";
+import { handleError } from "../../Component/Card";
+import { selctedGroupIndexSelector } from "../../selectors/groups.selectors";
+import { useAppSelector } from "../../store";
+import { groupAction } from "../../store/actions/groups.actions";
 
 interface GroupDetailProps {}
-
+const cssStyle = { minHeight: "713px"};
 const GroupDetail: React.FC<GroupDetailProps> = (props) => {
-  const { groupId } = useParams<{ groupId: string }>();
-  const [id, setId] = useState((groupId as unknown) as number);
+  const selectedGroupIndex =
+    useAppSelector((state) => state.groups.selectedGroupIndex) || 0;
+
+  const grouptoshow = useAppSelector(selctedGroupIndexSelector);
+  console.log(grouptoshow);
+  const fetchNextGroup = () => {
+    if (selectedGroupIndex < 17) {
+      groupAction.selectGroupIndex(selectedGroupIndex + 1);
+      fetchSpecificGroup(grouptoshow.id).then((response) => {});
+    }
+  };
+  const fetchPreviousGroup = () => {
+    if (selectedGroupIndex > 0) {
+      groupAction.selectGroupIndex(selectedGroupIndex - 1);
+      fetchSpecificGroup(grouptoshow.id).then((response) => {});
+    }
+  };
+
   return (
     <>
-      <div className="mt-20 w-screen h-11/12">
-        hello
-        <h1>{id}</h1>
-        <div className="space-x-3 ml-40 bottom-6 flex justify-between absolute ">
-          <button
-            className="px-3 py-2 w-28 border-2 text-black text-lg border-red-400 bg-red-300 hover:bg-red-200 hover:border-none"
-            onClick={() => {
-              setId(id - 1);
-            }}
-          >
-            Previous
-          </button>
-          <button
-            className="px-3 py-2 w-40 border-2 text-black text-lg border-green-400 bg-green-300 hover:bg-green-200 hover:border-none"
-            onClick={() => {
-              setId(id + 1);
-            }}
-          >
-            Next
-          </button>
-        </div>
+      <div className="pt-2 bg-gray-300 flex items-center mx-auto " style={cssStyle}>
+        <Link to={"/groups/" + grouptoshow.id} className="flex py-2.5 px-3">
+          <div className="container mx-auto p-5 pb-4 bg-white max-w-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition duration-300">
+            <img
+              className="rounded-xl w-96 h-40 "
+              src={
+                grouptoshow.group_image_url === null
+                  ? "https://i.ytimg.com/vi/p7TDpx0hsn4/maxresdefault.jpg"
+                  : grouptoshow.group_image_url
+              }
+              onError={handleError}
+              alt=""
+            />
+            <div>
+              <h1 className="mt-5 text-2xl font-semibold text-center uppercase">
+                {grouptoshow.name}
+              </h1>
+              <p className="mt-2 font-mono text-center ">
+                {grouptoshow.description}
+              </p>
+            </div>
+            <p className="my-2 space-y-1 text-md font-semibold">
+              <p>Created At - {grouptoshow.created_at}</p>
+              <p>Updated At - {grouptoshow.updated_at}</p>
+              <p>Chat Count - {grouptoshow.chatCount}</p>
+            </p>
+            <div>
+              <div className=" text-lg font-semibold uppercase underline ">
+                State Details :
+              </div>
+              <p className="my-2 space-y-1 text-md font-semibold no-underline ">
+                <p>State Code - {grouptoshow.state?.state_code}</p>
+                <p>Title - {grouptoshow.state?.title}</p>
+              </p>
+            </div>
+            <div className="mt-10 flex flex-row justify-between">
+              <button
+                className="text-white text-md font-semibold bg-green-400 py-2 px-4 rounded-lg shadow-md hover:shadow-lg transition duration-500 transform-gpu hover:scale-110 "
+                onClick={fetchPreviousGroup}
+              >
+                Previous
+              </button>
+              <button
+                className="text-white text-md font-semibold bg-green-400 py-2 px-4 rounded-lg shadow-md hover:shadow-lg transition duration-500 transform-gpu hover:scale-110 "
+                onClick={fetchNextGroup}
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        </Link>
       </div>
     </>
   );

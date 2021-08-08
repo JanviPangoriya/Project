@@ -16,7 +16,6 @@ const ForgotPassword: React.FC<Props> = (props) => {
       email: yup.string().required("Email is required field").email(),
     }),
     onSubmit: (data) => {
-      console.log(data);
     },
   });
   return (

@@ -44,6 +44,20 @@ export const groupQueryCompletedSelector = createSelector(
     return group;
   }
 );
+
+export const selctedIndexSelector = createSelector(
+  [ groupStateSelector],
+  (state) => {
+    return state.selectedGroupIndex;
+  }
+);
+
+export const selctedGroupIndexSelector = createSelector(
+  [groupByIdSelctor, groupStateSelector, selctedIndexSelector],
+  (byId, state,index) => {
+    return Object.values(state.byId)[index ? index : 0];
+  }
+);
 // export const groupQueryCompletedSelector = (state: AppState) => {
 //   const groupQuery = groupQuerySelector(state);
 //   const groupMapQuery = groupMapQuerySelector(state);
