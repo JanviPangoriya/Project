@@ -5,17 +5,18 @@ import { Link } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
 import { useDispatch } from "react-redux";
 import { UI_SIDEBAR } from "../constant";
+import { useAppSelector } from "../store";
+import { uiSideBarSelector } from "../selectors/ui.selectors";
+import { uiAction } from "../store/actions/ui.actions";
 interface Props {}
 
 const SubHeader: React.FC<Props> = (props) => {
   const dispatch = useDispatch();
-  // const sidebarStatus = useAppSelector((state) => state.isSideBarOpen);
+  const sidebarStatus = useAppSelector(uiSideBarSelector);
 
   const toggleSideBar = () => {
-    // dispatch({ type: UI_SIDEBAR, payload: !sidebarStatus });
-    if (window.innerWidth < 420) {
-      dispatch({ type: UI_SIDEBAR, payload: false });
-    }
+    console.log(sidebarStatus);
+    uiAction.open(!sidebarStatus);
   };
 
   return (

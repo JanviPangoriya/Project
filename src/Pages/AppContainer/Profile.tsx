@@ -2,7 +2,9 @@ import { useFormik } from "formik";
 import React from "react";
 import * as yup from "yup";
 import Input from "../../Component/Input/Input";
+import DateSelect from "../../Component/DateFormat/Date";
 import { meSelector } from "../../selectors/auth.selectors";
+import { uiSideBarSelector } from "../../selectors/ui.selectors";
 import {  useAppSelector } from "../../store";
 interface Props {}
 
@@ -26,9 +28,16 @@ const Profile: React.FC<Props> = (props) => {
     }),
     onSubmit: (data) => {},
   });
+  const sidebarStatus = useAppSelector(uiSideBarSelector);
+
   return (
-    <div className="w-full md:ml-60  bg-gray-300 h-full pb-5">
-      <h1 className="absolute uppercase pt-5 text-gray-600 font-semibold top-32 left-14 md:left-80">
+    <div
+      className={
+        "w-full  bg-gray-300 h-full pb-5 transform ease-in-out duration-500" +
+        (sidebarStatus ? " md:ml-64 " : "")
+      }
+    >
+      <h1 className="absolute uppercase pt-5 text-gray-600 font-semibold top-20 left-14 md:left-16">
         general information
       </h1>
       <div className="mt-20 bg-white mx-5 pl-8 pb-5 flex flex-col justify-start md:flex-row  md:items-center">
@@ -88,17 +97,20 @@ const Profile: React.FC<Props> = (props) => {
             ></Input>
           </div>
 
-          <label htmlFor="">Date Of Birth</label>
-          <Input
-            touched={myform.touched.roles}
-            error={myform.errors.roles}
-            placeholder="Date"
-            className="border-2 border-gray-400 md:w-80"
-            id="date"
-            type="date"
-            required
-            {...myform.getFieldProps("date")}
-          ></Input>
+          <DateSelect
+            label="Date of Birth"
+            format="dd/mm/yyyy"
+            formikProps={{
+              day: { ...myform.getFieldProps("birth_date") },
+              month: { ...myform.getFieldProps("birth_month") },
+              year: { ...myform.getFieldProps("birth_year") },
+            }}
+            ids={{
+              day: "birth_date",
+              month: "birth_month",
+              year: "birth_year",
+            }}
+          />
         </form>
       </div>
       <div className="flex flex-row justify-between m-3 mb-0">

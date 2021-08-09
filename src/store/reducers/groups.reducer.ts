@@ -11,8 +11,8 @@ import { addMany, EntityState, getIds } from "./entity.reducer";
 export interface GroupState extends EntityState<Group> {
   query: string;
   queryMap: { [query: string]: number[] };
-  selectedGroup?: number;
-  selectedGroupIndex?:number;
+  selectedGroup?: Group;
+  selectedGroupIndex?: number;
 }
 const initialState = {
   byId: {},
@@ -28,7 +28,7 @@ export const groupReducer: Reducer<GroupState> = (
       return { ...state, query: action.payload };
     case GROUP_SELECT:
       return { ...state, selectedGroup: action.payload };
-      case GROUP_SELECT_INDEX:
+    case GROUP_SELECT_INDEX:
       return { ...state, selectedGroupIndex: action.payload };
     case GROUP_QUERY_COMPLETED:
       const groups = action.payload.groups as Group[];

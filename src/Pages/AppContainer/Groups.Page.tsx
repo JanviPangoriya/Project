@@ -9,6 +9,7 @@ import {
   groupQueryCompletedSelector,
   groupQuerySelector,
 } from "../../selectors/groups.selectors";
+import { uiSideBarSelector } from "../../selectors/ui.selectors";
 import { useAppSelector } from "../../store";
 import { groupAction } from "../../store/actions/groups.actions";
 
@@ -25,13 +26,14 @@ const Groups: React.FC<Props> = () => {
       groupAction.querCompleted(query, groups)
     ); // eslint-disable-next-line
   }, [query]);
+  const sidebarStatus = useAppSelector(uiSideBarSelector);
 
   return (
     <div
-      className={"relative mt-24 transfom duration-500  ml-5"}
-      //  +
-      // (sidebarStatus ? "md:ml-64 " : "")
-      // }
+      className={"relative mt-24 transfom duration-500  ml-5 "
+       +
+      (sidebarStatus ? "md:ml-64 " : "")
+      }
     >
       <div className="text-5xl ml-10 bg-gradient-to-tl from-red-600 to-gray-500 font-bold mb-2 bg-clip-text text-transparent">
         Welcome {user!.first_name} !!!

@@ -7,6 +7,7 @@ import DashboardPage from "./Dashboard.Page";
 import Profile from "./Profile";
 import Groups from "./Groups.Page";
 import GroupDetail from "./GroupDetail.Page";
+import LeftSideBar from "../../Component/SideBar/LeftSideBar";
 
 interface Props {}
 
@@ -16,7 +17,7 @@ const AppContainer: React.FC<Props> = () => {
       <TopNav />
       <SubHeader />
       <div className="flex flex-row bg-gray-300 pt-10 ">
-        {/* <LeftSideBar /> */}
+        <LeftSideBar />
         <Switch>
           <Route path="/dashboard" exact>
             <DashboardPage />
