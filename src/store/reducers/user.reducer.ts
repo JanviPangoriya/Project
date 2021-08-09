@@ -1,7 +1,7 @@
 import { Reducer } from "redux";
-import { ME_FETCH, ME_LOGIN } from "../../constant";
+import { ME_FETCH, ME_LOGIN, ME_UPDATE } from "../../constant";
 import { User } from "../../model/User";
-import { addOne, EntityState } from "./entity.reducer";
+import { addOne, EntityState, updateOne } from "./entity.reducer";
 
 export interface UserState extends EntityState<User> {}
 const initialState = {
@@ -15,7 +15,11 @@ export const userReducer: Reducer<UserState> = (
     case ME_FETCH:
     case ME_LOGIN:
       return addOne(state, action.payload) as UserState;
+    case ME_UPDATE: {
+      const user = action.payload as User;
 
+      return updateOne(state, user);
+    }
     default:
       return state;
   }

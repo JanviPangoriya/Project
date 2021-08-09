@@ -2,13 +2,14 @@ import React, { memo, Suspense, useEffect } from "react";
 import { FaSpinner } from "react-icons/fa";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import { me } from "./api/auth";
-import { LS_AUTH_TOKEN} from "./constant";
+import { LS_AUTH_TOKEN } from "./constant";
 import AppContainerPageLazy from "./Pages/AppContainer/AppContainer.lazy";
 import AuthPageLazy from "./Pages/Auth/AuthPage.lazy";
 import NotFound from "./Pages/NotFound";
 import { meSelector } from "./selectors/auth.selectors";
 import { useAppSelector } from "./store";
-import { authAction} from "./store/actions/auth.actions";
+import { authAction } from "./store/actions/auth.actions";
+import { ImSpinner9 } from "react-icons/im";
 
 interface Props {}
 
@@ -18,15 +19,19 @@ const App: React.FC<Props> = (props) => {
   useEffect(() => {
     if (!token) return;
 
-    me().then((u) =>authAction.fetch(u));
+    me().then((u) => authAction.fetch(u));
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!user && token) {
-    return <div>Loading...</div>;
+    return (
+      <ImSpinner9 className="w-12 h-12 animate-spin mx-auto mt-2"></ImSpinner9>
+    );
   }
   return (
     <Suspense
-      fallback={<FaSpinner className="animate-spin mx-auto mt-2"></FaSpinner>}
+      fallback={
+        <ImSpinner9 className="w-12 h-12 animate-spin mx-auto mt-2"></ImSpinner9>
+      }
     >
       <BrowserRouter>
         <Switch>

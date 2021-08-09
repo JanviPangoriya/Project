@@ -16,7 +16,7 @@ const AppContainer: React.FC<Props> = () => {
     <div>
       <TopNav />
       <SubHeader />
-      <div className="flex flex-row bg-gray-300 pt-10 ">
+      <div className="flex flex-row bg-gray-300 pt-10 min-h-screen ">
         <LeftSideBar />
         <Switch>
           <Route path="/dashboard" exact>

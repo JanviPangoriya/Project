@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { IconType } from "react-icons";
 import { HiX } from "react-icons/hi";
 
 interface Props {
@@ -46,14 +45,11 @@ const Alert: React.FC<Props> = ({
     Icontheme = " text-red-700";
   }
   const [show, setShow] = useState("flex");
-  const unmount = () => {
-    setShow("hidden");
-  };
   return (
     <div>
       <div
         className={
-          "flex flex-row justify-between w-full px-3 py-2 text-md rounded-md " +
+          "flex flex-row justify-between px-3 py-2 text-md rounded-md " +
           (fill === "solid" ? solidtheme : outlinetheme) +
           " " +
           className +
@@ -62,20 +58,10 @@ const Alert: React.FC<Props> = ({
         }
       >
         <div>{children}</div>
-        <button onClick={unmount}>
+        <button>
           <HiX className={"h-6 w-6 " + Icontheme}></HiX>
         </button>
       </div>
-      <button
-        onClick={() => {
-          setShow("flex");
-        }}
-        className={
-          show === "hidden" ? "block ml-96 bg-red-400   px-10 py-2" : "hidden"
-        }
-      >
-        show
-      </button>
     </div>
   );
 };

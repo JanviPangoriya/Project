@@ -1,12 +1,9 @@
 import React from "react";
 import { ButtonHTMLAttributes } from "react";
-import { IconType } from "react-icons";
-import { HiLockClosed } from "react-icons/hi";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   theme?: "alert" | "success" | "info" | "warning" | "error";
   children: string;
-  Icon?: IconType;
   fill: "solid" | "outline";
 }
 
@@ -14,7 +11,6 @@ const Button: React.FC<Props> = ({
   children,
   theme,
   className,
-  Icon,
   fill,
   ...rest
 }) => {
@@ -53,25 +49,14 @@ const Button: React.FC<Props> = ({
       <button
         {...rest}
         className={
-          "group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 " +
+          "group relative  flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 " +
           (fill === "solid" ? solidtheme : outlinetheme) +
           " " +
           className
         }
       >
-        {Icon && (
-          <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-            <Icon
-              className={
-                "z-50 m-2 w-7 h-7  absolute " +Icontheme
-              }
-              aria-hidden="true"
-            ></Icon>
-          </span>
-        )}
-        <span className={Icontheme}>
-          {children}
-        </span>
+        
+        <span className={Icontheme}>{children}</span>
       </button>
     </>
   );
@@ -80,6 +65,5 @@ const Button: React.FC<Props> = ({
 Button.defaultProps = {
   theme: "info",
   fill: "solid",
-  Icon: HiLockClosed,
 };
 export default Button;

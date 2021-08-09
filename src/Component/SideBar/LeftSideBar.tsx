@@ -37,7 +37,7 @@ const LeftSideBar: React.FC<Props> = (props) => {
         <Link
           to="/dashboard"
           className="transform duration-500 "
-          onClick={toggleSideBar}
+          // onClick={toggleSideBar}
         >
           <SidebarElement
             text={"Dashboard"}
@@ -48,7 +48,7 @@ const LeftSideBar: React.FC<Props> = (props) => {
         <Link
           to="/groups"
           className="transform duration-500 "
-          onClick={toggleSideBar}
+          // onClick={toggleSideBar}
         >
           <SidebarElement
             text={"Groups"}
@@ -59,7 +59,7 @@ const LeftSideBar: React.FC<Props> = (props) => {
         <Link
           to="/dashboard"
           className="transform duration-500 "
-          onClick={toggleSideBar}
+          // onClick={toggleSideBar}
         >
           <SidebarElement
             text={"Group By Id"}
@@ -70,7 +70,7 @@ const LeftSideBar: React.FC<Props> = (props) => {
         <Link
           to="/profile"
           className="transform duration-500 "
-          onClick={toggleSideBar}
+          // onClick={toggleSideBar}
         >
           <SidebarElement
             text={"Edit Profile"}

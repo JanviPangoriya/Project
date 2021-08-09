@@ -6,13 +6,21 @@ export interface EntityState<T extends Entity = Entity> {
   };
 }
 
-export const addOne = (state: EntityState, entity: Entity) => {  return { ...state, byId: { ...state.byId, [entity.id]: entity } };};
-export const addMany =<T extends EntityState = EntityState> (state: EntityState, entities: Entity[]) => {
+export const addOne = (state: EntityState, entity: Entity) => {
+  return { ...state, byId: { ...state.byId, [entity.id!]: entity } };
+};
+export const updateOne = (state: EntityState, entity: Entity) => {
+  return { ...state, byId: { ...state.byId, [entity.id!]: entity } };
+};
+export const addMany = <T extends EntityState = EntityState>(
+  state: EntityState,
+  entities: Entity[]
+) => {
   if (entities.length === 0) {
     return state as T;
   }
   const entityMap = entities.reduce((prev, entity) => {
-    return { ...prev, [entity.id]: entity };
+    return { ...prev, [entity.id!]: entity };
   }, {});
 
   return {
