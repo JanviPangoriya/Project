@@ -4,6 +4,7 @@ import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { fetchGroups } from "../../api/group";
 import Card from "../../Component/Card";
+import { Group } from "../../model/Group";
 import { meSelector } from "../../selectors/auth.selectors";
 import {
   groupQueryCompletedSelector,
@@ -58,8 +59,8 @@ const Groups: React.FC<Props> = () => {
                 to={"/groups/" + g.id}
                 className="flex py-2.5 px-3"
                 onClick={(e: any) => {
-                  groupAction.selectGroup(g.id);
-                  groupAction.selectGroupIndex(index);
+                  groupAction.selectGroup(g as Group);
+                  groupAction.selectGroupId(g.id);
                 }}
               >
                 <Card

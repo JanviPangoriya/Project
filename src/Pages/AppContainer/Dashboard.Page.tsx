@@ -8,7 +8,7 @@ const Dashboard: React.FC<Props> = () => {
 
   return (
     <>
-      <div className={"text-gray-800 pt-32 font-bold "+"relative transfom duration-500  ml-5" +
+      <div className={"text-gray-800 pt-32 font-bold relative transfom duration-500  ml-5" +
           (sidebarStatus ? " md:ml-64 " : "")} style={cssStyle}>
         <div className="text-5xl uppercase text-transparent bg-gradient-to-br from-red-700 to-blue-500 bg-clip-text font-extrabold">
           Welcome to Dashboard Page

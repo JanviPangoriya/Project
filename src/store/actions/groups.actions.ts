@@ -11,20 +11,20 @@ const queryCompletedAction = (query: string, groups: Group[]) => ({
 });
 
 
-export const selectGroup = (id: number) => ({
+export const selectGroupAction = (group: Group) => ({
   type: GROUP_SELECT,
-  payload: id,
+  payload: group,
 });
-export const selectGroupIndex = (index: number) => ({
+export const selectGroupIdAction = (id: number) => ({
   type: GROUP_SELECT_INDEX,
-  payload: index,
+  payload: id,
 });
 export const groupAction = bindActionCreators(
   {
     query: queryAction,
     querCompleted: queryCompletedAction,
-    selectGroup: selectGroup,
-    selectGroupIndex: selectGroupIndex,
+    selectGroup: selectGroupAction,
+    selectGroupId: selectGroupIdAction,
   },
   store.dispatch
 );

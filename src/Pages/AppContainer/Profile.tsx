@@ -2,21 +2,20 @@ import { useFormik } from "formik";
 import React from "react";
 import * as yup from "yup";
 import Input from "../../Component/Input/Input";
-import DateSelect from "../../Component/DateFormat/Date";
 import { meSelector } from "../../selectors/auth.selectors";
 import { uiSideBarSelector } from "../../selectors/ui.selectors";
-import {  useAppSelector } from "../../store";
+import { useAppSelector } from "../../store";
 interface Props {}
 
 const Profile: React.FC<Props> = (props) => {
-   const user = useAppSelector(meSelector);
+  const user = useAppSelector(meSelector);
   const myform = useFormik({
     initialValues: {
       first_name: "",
       middle_name: "",
       last_name: "",
-          roles: "",
-      date:"",
+      roles: "",
+      date: "",
       title: "",
     },
     validationSchema: yup.object().shape({
@@ -96,21 +95,6 @@ const Profile: React.FC<Props> = (props) => {
               {...myform.getFieldProps("last_name")}
             ></Input>
           </div>
-
-          <DateSelect
-            label="Date of Birth"
-            format="dd/mm/yyyy"
-            formikProps={{
-              day: { ...myform.getFieldProps("birth_date") },
-              month: { ...myform.getFieldProps("birth_month") },
-              year: { ...myform.getFieldProps("birth_year") },
-            }}
-            ids={{
-              day: "birth_date",
-              month: "birth_month",
-              year: "birth_year",
-            }}
-          />
         </form>
       </div>
       <div className="flex flex-row justify-between m-3 mb-0">

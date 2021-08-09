@@ -1,9 +1,7 @@
 import { Transition } from "@headlessui/react";
 import React, { Fragment } from "react";
 import { memo } from "react";
-import { FiCpu, FiTarget, FiAirplay, FiMap, FiPieChart } from "react-icons/fi";
-import { BiCube } from "react-icons/bi";
-import { GiElectric } from "react-icons/gi";
+import { FiCpu} from "react-icons/fi";
 import SidebarElement from "./SidebarElement";
 import { AiOutlineHome } from "react-icons/ai";
 import { uiSideBarSelector } from "../../selectors/ui.selectors";

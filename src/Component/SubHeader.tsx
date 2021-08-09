@@ -3,15 +3,12 @@ import React from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
-import { useDispatch } from "react-redux";
-import { UI_SIDEBAR } from "../constant";
 import { useAppSelector } from "../store";
 import { uiSideBarSelector } from "../selectors/ui.selectors";
 import { uiAction } from "../store/actions/ui.actions";
 interface Props {}
 
 const SubHeader: React.FC<Props> = (props) => {
-  const dispatch = useDispatch();
   const sidebarStatus = useAppSelector(uiSideBarSelector);
 
   const toggleSideBar = () => {

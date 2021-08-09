@@ -12,7 +12,7 @@ export interface GroupState extends EntityState<Group> {
   query: string;
   queryMap: { [query: string]: number[] };
   selectedGroup?: Group;
-  selectedGroupIndex?: number;
+  selectedGroupId?: number;
 }
 const initialState = {
   byId: {},
@@ -29,7 +29,7 @@ export const groupReducer: Reducer<GroupState> = (
     case GROUP_SELECT:
       return { ...state, selectedGroup: action.payload };
     case GROUP_SELECT_INDEX:
-      return { ...state, selectedGroupIndex: action.payload };
+      return { ...state, selectedGroupId: action.payload };
     case GROUP_QUERY_COMPLETED:
       const groups = action.payload.groups as Group[];
       const groupIds = getIds(groups);
