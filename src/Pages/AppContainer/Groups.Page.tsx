@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useHistory } from "react-router-dom";
 import { fetchGroups } from "../../middleware/groups.middleware";
@@ -22,11 +22,10 @@ const Groups: React.FC<Props> = () => {
   const query = useAppSelector(groupQuerySelector);
   const groups = useAppSelector(groupQueryCompletedSelector);
   const loading = useAppSelector(groupLoadingSelector);
-  // useEffect(() => {
-  //   fetchGroups({ status: "all-groups", query }).then((groups) => {
-  //     groupAction.querCompleted(groups,query);
-  //   }); // eslint-disable-next-line
-  // }, [query]);
+  useEffect(() => {
+    fetchGroups({ query: "", status: "all-groups" });
+ // eslint-disable-next-line
+  }, []);
   const sidebarStatus = useAppSelector(uiSideBarSelector);
 
   return (
