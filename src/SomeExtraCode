@@ -10,3 +10,22 @@
 //        })
 //     return response;
 //   });
+
+
+1 approach----------------------
+// export const fetchGroups = (request: GroupRequest) => {
+//   const query = request.query;
+
+//   const groupsMap = groupMapQuerySelector(store.getState());
+//   const groupId = groupsMap[query];
+//   groupAction.query(query, !groupId);
+//   if (groupId) {
+//     return;
+//   }
+//   fetchGroupsApi(request).then((groups) => {
+//     groupAction.querCompleted(groups, query);
+//   });
+// };
+-----------------------------------------------
+
+
