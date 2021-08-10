@@ -7,16 +7,12 @@ import { AiOutlineHome } from "react-icons/ai";
 import { uiSideBarSelector } from "../../selectors/ui.selectors";
 import { useAppSelector } from "../../store";
 import { Link } from "react-router-dom";
-import { uiAction } from "../../store/actions/ui.actions";
 import { logout } from "../../api/auth";
 
 interface Props {}
 
 const LeftSideBar: React.FC<Props> = (props) => {
   const sidebarStatus = useAppSelector(uiSideBarSelector);
-  const toggleSideBar = () => {
-    uiAction.open(false);
-  };
   return (
     <Transition
       as={Fragment}

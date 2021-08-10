@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { memo } from "react";
 import { FaSearch } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import {useHistory } from "react-router-dom";
 import { fetchGroups } from "../../api/group";
 import Card from "../../Component/Card";
 import { Group } from "../../model/Group";
@@ -19,7 +19,7 @@ interface Props {}
 const Groups: React.FC<Props> = () => {
   // const sidebarStatus = useAppSelector((state) => state.isSideBarOpen);
   const [isLoading, setIsLoading] = useState(false);
-
+  const history = useHistory();
   const query = useAppSelector(groupQuerySelector);
 
   const groups = useAppSelector(groupQueryCompletedSelector);
@@ -44,7 +44,9 @@ const Groups: React.FC<Props> = () => {
           type="text"
           className="max-w-screen ml-5 sm:ml-8  justify-center mb-4 border-4 border-gray-600 w-96 h-12 px-10 placeholder-gray-600 focus:placeholder-gray-300 "
           placeholder="Search . . . "
+          value={query}
           onChange={(e) => {
+            console.log(e.target.value);
             groupAction.query(e.target.value);
           }}
         />
@@ -60,12 +62,12 @@ const Groups: React.FC<Props> = () => {
           groups.map((g: any, index: number) => {
             return (
               <>
-                <Link
-                  to={"/groups/" + g.id}
+                <div
                   className="flex py-2.5 px-3"
                   onClick={(e: any) => {
                     groupAction.selectGroup(g as Group);
                     groupAction.selectGroupId(g.id);
+                    history.push("/groups/"+g.id)
                   }}
                 >
                   <Card
@@ -81,7 +83,7 @@ const Groups: React.FC<Props> = () => {
                     creator={g.creator}
                     state={g.state}
                   />
-                </Link>
+                </div>
               </>
             );
           })):<Alert className="ml-5 mr-18" fill="solid" theme="error"> NO RECORD FOUND</Alert>

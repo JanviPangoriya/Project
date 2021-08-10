@@ -1,5 +1,4 @@
 import React, { memo, Suspense, useEffect } from "react";
-import { FaSpinner } from "react-icons/fa";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import { me } from "./api/auth";
 import { LS_AUTH_TOKEN } from "./constant";

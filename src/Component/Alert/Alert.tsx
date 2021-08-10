@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { HiX } from "react-icons/hi";
 
 interface Props {
@@ -44,7 +43,6 @@ const Alert: React.FC<Props> = ({
     solidtheme = " bg-red-200 text-red-500 hover:bg-red-300 ";
     Icontheme = " text-red-700";
   }
-  const [show, setShow] = useState("flex");
   return (
     <div>
       <div
@@ -52,9 +50,7 @@ const Alert: React.FC<Props> = ({
           "flex flex-row justify-between px-3 py-2 text-md rounded-md " +
           (fill === "solid" ? solidtheme : outlinetheme) +
           " " +
-          className +
-          " " +
-          show
+          className
         }
       >
         <div>{children}</div>

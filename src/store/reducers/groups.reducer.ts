@@ -25,6 +25,7 @@ export const groupReducer: Reducer<GroupState> = (
 ) => {
   switch (action.type) {
     case GROUP_QUERY:
+      console.log(action.payload);
       return { ...state, query: action.payload };
     case GROUP_SELECT:
       return { ...state, selectedGroup: action.payload };

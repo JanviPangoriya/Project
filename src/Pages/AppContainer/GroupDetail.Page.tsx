@@ -62,7 +62,6 @@ const GroupDetail: React.FC<GroupDetailProps> = (props) => {
             <div>
               <h1 className="mt-5 text-2xl font-semibold text-center uppercase">
                 {grouptoshow?.name}
-                {grouptoshow?.id}
               </h1>
               <p className="mt-2 font-mono text-center ">
                 {grouptoshow?.description}
