@@ -13,6 +13,7 @@ import { uiSideBarSelector } from "../../selectors/ui.selectors";
 import { useAppSelector } from "../../store";
 import { ImSpinner9 } from "react-icons/im";
 import { groupAction } from "../../store/actions/groups.actions";
+import Alert from "../../Component/Alert/Alert";
 
 interface Props {}
 const Groups: React.FC<Props> = () => {
@@ -77,6 +78,11 @@ const Groups: React.FC<Props> = () => {
             </>
           );
         })}
+      {!loading && groups.length === 0 && (
+        <Alert theme="error" fill="solid" className="ml-5">
+          No Data Found
+        </Alert>
+      )}
     </div>
   );
 };

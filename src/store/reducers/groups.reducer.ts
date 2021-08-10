@@ -13,13 +13,13 @@ export interface GroupState extends EntityState<Group> {
   queryMap: { [query: string]: number[] };
   selectedGroup?: Group;
   selectedGroupId?: number;
-  loadingQuery: { [query: string]: boolean };
+  loading:boolean;
 }
 const initialState = {
   byId: {},
   query: "",
   queryMap: {},
-  loadingQuery: {},
+  loading:false,
 };
 export const groupReducer: Reducer<GroupState> = (
   state = initialState,
@@ -27,15 +27,12 @@ export const groupReducer: Reducer<GroupState> = (
 ) => {
   switch (action.type) {
     case GROUP_QUERY:
-      // const { query, loading } = action.payload;
-      return {
-        ...state,
-        query: action.payload,
-        loadingQuery: {
-          ...state.loadingQuery,
-          [action.payload]: true,
-        },
-      };
+     const query=action.payload;
+            return {
+              ...state,
+              query: query,
+              loading: true,
+            };
     case GROUP_SELECT:
       return { ...state, selectedGroup: action.payload };
     case GROUP_SELECT_INDEX:
@@ -50,10 +47,7 @@ export const groupReducer: Reducer<GroupState> = (
           ...newState.queryMap,
           [action.payload.query]: groupIds,
         },
-        loadingQuery: {
-          ...state.loadingQuery,
-          [action.payload.query]: false,
-        },
+        loading: false,
       };
     default:
       return state;
