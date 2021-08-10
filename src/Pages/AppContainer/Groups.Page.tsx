@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import { memo } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useHistory } from "react-router-dom";
