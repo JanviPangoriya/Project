@@ -51,6 +51,19 @@ export const selctedGroupSelector = createSelector(
     return group.selectedGroup;
   }
 );
+
+export const groupLoadingQuerySelector = createSelector(
+  [groupStateSelector],
+  (state) => state.loadingQuery
+);
+
+export const groupLoadingSelector = createSelector(
+  [groupQuerySelector, groupLoadingQuerySelector], (query, loadingMap) =>
+  {
+    // console.log(loadingMap)
+    return loadingMap[query];
+    }
+)
 // export const groupQueryCompletedSelector = (state: AppState) => {
 //   const groupQuery = groupQuerySelector(state);
 //   const groupMapQuery = groupMapQuerySelector(state);

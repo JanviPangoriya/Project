@@ -5,7 +5,7 @@ export interface uiState {
   isSideBarOpen: boolean;
 }
 const initialState = {
-  isSideBarOpen: true,
+  isSideBarOpen: false,
 };
 export const uiReducer: Reducer<uiState> = (state = initialState, action) => {
   switch (action.type) {

@@ -4,7 +4,7 @@ export const GROUP_QUERY = "groups/query";
 export const GROUP_QUERY_COMPLETED = "groups/query_completed";
 export const GROUP_SELECT = "groups/select";
 export const GROUP_SELECT_INDEX = "groups/select/index";
-
+export const GROUP_LOADING = "groups/loading";
 
 export const ME_FETCH = "me/fetch";
 export const ME_LOGIN = "me/login";
