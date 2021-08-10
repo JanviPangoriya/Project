@@ -17,7 +17,7 @@ import Alert from "../../Component/Alert/Alert";
 
 interface Props {}
 const Groups: React.FC<Props> = () => {
-  // const sidebarStatus = useAppSelector((state) => state.isSideBarOpen);
+  // const sidebarStatus = useAppSelector((state) => state.
   const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
   const query = useAppSelector(groupQuerySelector);
