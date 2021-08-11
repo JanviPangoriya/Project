@@ -1,5 +1,8 @@
 import { TypedUseSelectorHook, useSelector } from "react-redux";
-import { combineReducers, createStore} from "redux";
+import { applyMiddleware, combineReducers, createStore} from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import { sagaMiddleware } from "../Sagas";
+import { watchGroupQueryChanged } from "../Sagas/groups.sagas";
 import { authReducer } from "./reducers/auth.reducer";
 import { groupReducer } from "./reducers/groups.reducer";
 import { uiReducer } from "./reducers/ui.reducers";
@@ -14,8 +17,9 @@ const reducer = combineReducers({
 
 export const store = createStore(
   reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composeWithDevTools(applyMiddleware(sagaMiddleware))
 );
+sagaMiddleware.run(watchGroupQueryChanged);
 
 export type AppState = ReturnType<typeof reducer>;
 

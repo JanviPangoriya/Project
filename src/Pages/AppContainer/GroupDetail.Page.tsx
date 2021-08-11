@@ -6,7 +6,7 @@ import { handleError } from "../../Component/Card";
 import { selctedGroupSelector } from "../../selectors/groups.selectors";
 import { uiSideBarSelector } from "../../selectors/ui.selectors";
 import { useAppSelector } from "../../store";
-import { groupAction } from "../../store/actions/groups.actions";
+import { selectGroupAction, selectGroupIdAction } from "../../store/actions/groups.actions";
 
 interface GroupDetailProps {}
 const cssStyle = { minHeight: "713px" };
@@ -21,8 +21,8 @@ const GroupDetail: React.FC<GroupDetailProps> = (props) => {
   useEffect(() => {
     fetchSpecificGroup(selectedId)
       .then((response) => {
-        groupAction.selectGroupId(selectedId);
-        groupAction.selectGroup(response);
+        selectGroupIdAction(selectedId);
+        selectGroupAction(response);
         setErrorMessage("");
       })
       .catch((error) => {

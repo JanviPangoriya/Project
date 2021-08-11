@@ -1,5 +1,3 @@
-import { bindActionCreators } from "redux";
-import { store } from "..";
 import {
   GROUP_QUERY,
   GROUP_QUERY_COMPLETED,
@@ -8,7 +6,7 @@ import {
 } from "../../constant";
 import { Group } from "../../model/Group";
 
-const queryAction = (query: string) => ({ type: GROUP_QUERY, payload: query });
+export const queryAction = (query: string) => ({ type: GROUP_QUERY, payload: query });
 
 export const queryCompletedAction = (groups: Group[], query: string) => ({
   type: GROUP_QUERY_COMPLETED,
@@ -23,12 +21,3 @@ export const selectGroupIdAction = (id: number) => ({
   type: GROUP_SELECT_INDEX,
   payload: id,
 });
-export const groupAction = bindActionCreators(
-  {
-    query: queryAction,
-    querCompleted: queryCompletedAction,
-    selectGroup: selectGroupAction,
-    selectGroupId: selectGroupIdAction,
-  },
-  store.dispatch
-);

@@ -1,7 +1,6 @@
-import { memo, useEffect } from "react";
+import { memo, useEffect} from "react";
 import { FaSearch } from "react-icons/fa";
 import { useHistory } from "react-router-dom";
-import { fetchGroups } from "../../middleware/groups.middleware";
 import Card from "../../Component/Card";
 import { Group } from "../../model/Group";
 import {
@@ -12,20 +11,27 @@ import {
 import { uiSideBarSelector } from "../../selectors/ui.selectors";
 import { useAppSelector } from "../../store";
 import { ImSpinner9 } from "react-icons/im";
-import { groupAction } from "../../store/actions/groups.actions";
 import Alert from "../../Component/Alert/Alert";
+import { useDispatch } from "react-redux";
+import {
+  queryAction,
+  selectGroupAction,
+  selectGroupIdAction,
+} from "../../store/actions/groups.actions";
 
 interface Props {}
 const Groups: React.FC<Props> = () => {
   // const sidebarStatus = useAppSelector((state) => state.
   const history = useHistory();
+  const dispatch = useDispatch();
   const query = useAppSelector(groupQuerySelector);
   const groups = useAppSelector(groupQueryCompletedSelector);
   const loading = useAppSelector(groupLoadingSelector);
-  useEffect(() => {
-    fetchGroups({ query: "", status: "all-groups" });
- // eslint-disable-next-line
-  }, []);
+    useEffect(() => {
+                  dispatch(queryAction(""));
+
+   // eslint-disable-next-line
+    }, []);
   const sidebarStatus = useAppSelector(uiSideBarSelector);
 
   return (
@@ -42,7 +48,7 @@ const Groups: React.FC<Props> = () => {
           placeholder="Search . . . "
           value={query}
           onChange={(e) => {
-            fetchGroups({ query: e.target.value, status: "all-groups" });
+            dispatch(queryAction(e.target.value));
           }}
         />
         <FaSearch className={" absolute left-10 w-6 h-6 mb-3 text-gray-700 "} />
@@ -55,8 +61,8 @@ const Groups: React.FC<Props> = () => {
               <div
                 className="flex py-2.5 px-3"
                 onClick={(e: any) => {
-                  groupAction.selectGroup(g as Group);
-                  groupAction.selectGroupId(g.id);
+                  selectGroupAction(g as Group);
+                  selectGroupIdAction(g.id);
                   history.push("/groups/" + g.id);
                 }}
               >
@@ -78,7 +84,7 @@ const Groups: React.FC<Props> = () => {
           );
         })}
       {!loading && groups.length === 0 && (
-        <Alert theme="error" fill="solid" className="ml-5">
+        <Alert theme="error" fill="solid" className="ml-8">
           No Data Found
         </Alert>
       )}

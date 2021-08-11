@@ -10,6 +10,4 @@ export const ME_FETCH = "me/fetch";
 export const ME_LOGIN = "me/login";
 export const ME_UPDATE = "me/update";
 
-
-
 export const UI_SIDEBAR = "sidebar";
