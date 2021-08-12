@@ -5,7 +5,7 @@ import { fetchSpecificGroup } from "../../api/group";
 import Button from "../../Component/Button/Button";
 import { handleError } from "../../Component/Card";
 import { selctedGroupSelector } from "../../selectors/groups.selectors";
-import { uiSideBarSelector } from "../../selectors/ui.selectors";
+// import { uiSideBarSelector } from "../../selectors/ui.selectors";
 import { useAppSelector } from "../../store";
 import {
   selectGroupAction,
@@ -33,6 +33,7 @@ const GroupDetail: React.FC<GroupDetailProps> = (props) => {
       .catch((error) => {
         setErrorMessage("Group do not exist with " + selectedId + " id");
       });
+    // eslint-disable-next-line
   }, [selectedId]);
   const fetchNextGroup = () => {
     setSelectedId((selectedId) => selectedId + 1);
