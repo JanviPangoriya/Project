@@ -138,7 +138,7 @@ const Profile: React.FC<Props> = (props) => {
               />
             </div>
           </div>
-          <div className="fixed bottom-0 flex justify-between px-5 py-3  rounded-t-md w-96 space-x-3">
+          <div className="flex justify-between px-5 rounded-t-md w-96 space-x-3 -700">
             <Button type="reset" fill="solid" theme="error">
               Reset All
             </Button>
