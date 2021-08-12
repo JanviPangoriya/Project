@@ -87,26 +87,30 @@ const GroupDetail: React.FC<GroupDetailProps> = (props) => {
                 <p>Title - {grouptoshow?.state?.title}</p>
               </p>
             </div>
+            <div
+              className={
+                "flex justify-between w-96 px-2 "
+              }
+            >
+              <Button
+                fill="solid"
+                theme="alert"
+                className=" w-36 "
+                onClick={fetchPreviousGroup}
+              >
+                Previous
+              </Button>
+              <Button
+                className=" w-36 mr-10 "
+                theme="error"
+                fill="solid"
+                onClick={fetchNextGroup}
+              >
+                Next
+              </Button>
+            </div>
           </div>
         )}
-        <div className={"bottom-5 absolute mx-auto  flex justify-around w-96 "}>
-          <Button
-            fill="solid"
-            theme="alert"
-            className=" w-40 "
-            onClick={fetchPreviousGroup}
-          >
-            Previous
-          </Button>
-          <Button
-            className=" w-40 "
-            theme="error"
-            fill="solid"
-            onClick={fetchNextGroup}
-          >
-            Next
-          </Button>
-        </div>
       </div>
     </>
   );
