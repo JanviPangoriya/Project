@@ -1,3 +1,5 @@
+// import { bindActionCreators } from "redux";
+// import { store } from "..";
 import {
   GROUP_QUERY,
   GROUP_QUERY_COMPLETED,
@@ -21,3 +23,10 @@ export const selectGroupIdAction = (id: number) => ({
   type: GROUP_SELECT_INDEX,
   payload: id,
 });
+// export const groupActions = bindActionCreators(
+//   {
+//     selectGroupIdAction: selectGroupIdAction,
+//     selectGroupAction: selectGroupAction,
+//   },
+//   store.dispatch
+// );

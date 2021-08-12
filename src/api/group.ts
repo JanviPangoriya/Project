@@ -18,7 +18,7 @@ export const fetchGroups = (data: GroupRequest, token?: CancelToken) => {
   const url = BASE_URL + "/groups";
 
   return axios
-    .get<GroupResponse>(url, { params: data ,cancelToken:token})
+    .get<GroupResponse>(url, { params: data, cancelToken: token })
     .then((response) => {
       return response.data.data;
     })

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { fetchSpecificGroup } from "../../api/group";
 import Button from "../../Component/Button/Button";
@@ -6,23 +7,27 @@ import { handleError } from "../../Component/Card";
 import { selctedGroupSelector } from "../../selectors/groups.selectors";
 import { uiSideBarSelector } from "../../selectors/ui.selectors";
 import { useAppSelector } from "../../store";
-import { selectGroupAction, selectGroupIdAction } from "../../store/actions/groups.actions";
+import {
+  selectGroupAction,
+  selectGroupIdAction,
+} from "../../store/actions/groups.actions";
 
 interface GroupDetailProps {}
 const cssStyle = { minHeight: "713px" };
 
 const GroupDetail: React.FC<GroupDetailProps> = (props) => {
-  const sidebarStatus = useAppSelector(uiSideBarSelector);
+  // const sidebarStatus = useAppSelector(uiSideBarSelector);
   const history = useHistory();
   const [errorMessage, setErrorMessage] = useState("");
   const grouptoshow = useAppSelector(selctedGroupSelector);
   const { groupId } = useParams<{ groupId: string }>();
+  const dispatch = useDispatch();
   const [selectedId, setSelectedId] = useState(parseInt(groupId));
   useEffect(() => {
     fetchSpecificGroup(selectedId)
       .then((response) => {
-        selectGroupIdAction(selectedId);
-        selectGroupAction(response);
+        dispatch(selectGroupIdAction(selectedId));
+        dispatch(selectGroupAction(response));
         setErrorMessage("");
       })
       .catch((error) => {
@@ -83,7 +88,6 @@ const GroupDetail: React.FC<GroupDetailProps> = (props) => {
             </div>
           </div>
         )}
-        {console.log(sidebarStatus)}
         <div className={"bottom-5 absolute mx-auto  flex justify-around w-96 "}>
           <Button
             fill="solid"

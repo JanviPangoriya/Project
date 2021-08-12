@@ -1,4 +1,4 @@
-import { memo, useEffect} from "react";
+import { memo, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useHistory } from "react-router-dom";
 import Card from "../../Component/Card";
@@ -27,11 +27,11 @@ const Groups: React.FC<Props> = () => {
   const query = useAppSelector(groupQuerySelector);
   const groups = useAppSelector(groupQueryCompletedSelector);
   const loading = useAppSelector(groupLoadingSelector);
-    useEffect(() => {
-                  dispatch(queryAction(""));
+  useEffect(() => {
+    dispatch(queryAction(""));
 
-   // eslint-disable-next-line
-    }, []);
+    // eslint-disable-next-line
+  }, []);
   const sidebarStatus = useAppSelector(uiSideBarSelector);
 
   return (
@@ -61,8 +61,8 @@ const Groups: React.FC<Props> = () => {
               <div
                 className="flex py-2.5 px-3"
                 onClick={(e: any) => {
-                  selectGroupAction(g as Group);
-                  selectGroupIdAction(g.id);
+                  dispatch(selectGroupAction(g as Group));
+                  dispatch(selectGroupIdAction(g.id));
                   history.push("/groups/" + g.id);
                 }}
               >
